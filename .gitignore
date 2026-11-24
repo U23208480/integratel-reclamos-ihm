@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.vscode/
+.env
+backend/integratel.db
+backend/pdfs/*.pdf
+backend/sent_emails/*.eml
+_cap.html

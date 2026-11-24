@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo interactiva | Integratel — Sistema de Gestión de Reclamos</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',Arial,sans-serif;background:#0B2545;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+header{width:100%;padding:18px 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:#081A33;border-bottom:1px solid rgba(255,255,255,.08)}
+header h1{font-size:18px;font-weight:800}
+header h1 span{color:#00B4D8}
+.tabs{display:flex;gap:8px;background:rgba(255,255,255,.08);padding:5px;border-radius:999px}
+.tabs button{border:0;background:transparent;color:#C7DCEA;font:700 14px 'Plus Jakarta Sans',Arial;padding:9px 20px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:#00B4D8;color:#fff}
+.tools{display:flex;gap:10px;align-items:center;font-size:13px;color:#9FBED3}
+.tools button{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font:700 13px 'Plus Jakarta Sans',Arial;padding:8px 14px;border-radius:999px;cursor:pointer}
+.tools b{color:#fff}
+.stage{flex:1;width:100%;display:flex;justify-content:center;align-items:flex-start;padding:28px 12px 40px;overflow:auto}
+/* celular */
+.phone{width:410px;height:860px;background:#111;border-radius:52px;padding:16px;box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 3px #2b2b2b;position:relative;flex-shrink:0}
+.phone .notch{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:130px;height:26px;background:#111;border-radius:0 0 18px 18px;z-index:5}
+.phone iframe{width:378px;height:828px;border:0;border-radius:38px;background:#fff;display:block}
+/* PC */
+.pc{width:1280px;max-width:100%;flex-shrink:0}
+.pc .bar{background:#E8ECF1;border-radius:14px 14px 0 0;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.pc .dots{display:flex;gap:7px}.pc .dots i{width:12px;height:12px;border-radius:50%;display:block}
+.pc .url{flex:1;background:#fff;color:#444;border-radius:8px;padding:7px 14px;font-size:13px}
+.pc iframe{width:100%;height:760px;border:0;background:#fff;display:block;border-radius:0 0 12px 12px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.hint{max-width:1100px;text-align:center;font-size:13px;color:#9FBED3;padding:0 20px 24px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>Integratel · <span>Demo interactiva</span> del Sistema de Gestión de Reclamos</h1>
+  <div class="tabs"><button id="b-m" class="on">📱 Celular</button><button id="b-p">🖥 PC</button></div>
+  <div class="tools"><span>Cuenta demo: <b>71234567</b> / <b>Demo1234</b></span><button id="reiniciar">Reiniciar</button></div>
+</header>
+<div class="stage">
+  <div class="phone" id="phone"><div class="notch"></div><iframe id="f-m" title="Sistema en celular" src="sistema/index.html"></iframe></div>
+  <div class="pc hide" id="pc">
+    <div class="bar"><div class="dots"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></div><div class="url">localhost:5000/sistema</div></div>
+    <iframe id="f-p" title="Sistema en PC" src="sistema/index.html"></iframe>
+  </div>
+</div>
+<p class="hint">Es el sistema real en ejecución: escribe en los campos, elige opciones, registra un reclamo, confirma en la ventana emergente y revisa el seguimiento. El modo Celular aplica las reglas responsivas reales (menú inferior y panel lateral oculto).</p>
+<script>
+const m=document.getElementById('phone'),p=document.getElementById('pc'),bm=document.getElementById('b-m'),bp=document.getElementById('b-p');
+function show(mode){const mob=mode==='m';m.classList.toggle('hide',!mob);p.classList.toggle('hide',mob);bm.classList.toggle('on',mob);bp.classList.toggle('on',!mob);try{localStorage.setItem('demo_modo',mode)}catch(e){}}
+bm.onclick=()=>show('m');bp.onclick=()=>show('p');
+document.getElementById('reiniciar').onclick=()=>{['f-m','f-p'].forEach(id=>{const f=document.getElementById(id);try{f.contentWindow.sessionStorage.clear();f.contentWindow.localStorage.clear()}catch(e){}f.src='sistema/index.html'})};
+let modo='m';try{modo=localStorage.getItem('demo_modo')||'m'}catch(e){} show(modo);
+</script>
+</body>
+</html>

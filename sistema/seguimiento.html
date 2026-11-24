@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguimiento | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Seguimiento de reclamo</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div class="section-head" style="max-width:720px;margin-bottom:22px;">
+        <span class="kicker">Consulta pública</span>
+        <h1 class="section-title" style="font-size:calc(34px * var(--fs,1));">Seguimiento de reclamo</h1>
+        <p class="section-sub">Consulta el estado con el código que recibiste, sin necesidad de iniciar sesión.</p>
+      </div>
+
+      <div class="panel" style="margin-bottom:22px;">
+        <form id="form-seg" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="codigo">Código de seguimiento <span class="req">*</span></label>
+              <input class="input" id="codigo" placeholder="REC-2026-00001" autocomplete="off"
+                     aria-describedby="codigo-hint">
+              <div class="field-hint" id="codigo-hint">Formato REC-AAAA-NNNNN. Lo recibiste por correo al registrar el reclamo.</div>
+            </div>
+            <div class="field">
+              <label for="documento">N° de documento del titular</label>
+              <input class="input" id="documento" placeholder="Opcional" autocomplete="off">
+              <div class="field-hint">Si lo ingresas, verificamos que el reclamo sea tuyo.</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" id="btn-buscar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.6" cy="10.6" r="6.6"/><path d="M15.4 15.4 20.6 20.6"/></svg>
+            Consultar estado
+          </button>
+          <span id="conteo" style="margin-left:14px;font-size:calc(13.5px * var(--fs,1));color:var(--muted);"></span>
+        </form>
+      </div>
+
+      <div id="resultado"></div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+const sim = new URLSearchParams(location.search).get('simular');
+const form = document.getElementById('form-seg');
+
+function badge(e) {
+  const m = {'Recibido':'badge-recibido','En proceso':'badge-proceso','Atendido':'badge-atendido','Improcedente':'badge-improcedente'};
+  return '<span class="badge '+(m[e]||'badge-navy')+'"><span class="badge-dot"></span>'+e+'</span>';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const codigo = document.getElementById('codigo').value.trim().toUpperCase();
+  const doc = document.getElementById('documento').value.trim();
+
+  const ok = Estados.validar(form, [{
+    id: 'codigo', etiqueta: 'Código de seguimiento',
+    test: (v) => /^REC-\d{4}-\d{5}$/.test(v.toUpperCase()),
+    mensaje: 'El código debe tener el formato REC-AAAA-NNNNN, por ejemplo REC-2026-00001.',
+  }]);
+  if (!ok) { document.getElementById('resultado').innerHTML = ''; document.getElementById('conteo').textContent = ''; return; }
+
+  const detener = Estados.cargando('#resultado', 2, 'Buscando tu reclamo…');
+  const r = await Reclamos.buscarPorCodigo(codigo, doc, sim);
+  if (detener) detener();
+
+  if (Estados.desdeRespuesta('#resultado', r, {
+    acciones: [{ texto: 'Reintentar', onClick: () => form.requestSubmit() },
+               { texto: 'Ir a mis reclamos', href: 'mis-reclamos.html' }],
+  })) { document.getElementById('conteo').textContent = ''; return; }
+
+  document.getElementById('conteo').textContent = r.resultados + ' resultado' + (r.resultados === 1 ? '' : 's') + ' para «' + codigo + '»';
+
+  if (!r.resultados) {
+    // Estado 2 del catálogo: vacío por búsqueda
+    Estados.pintar('#resultado', 'vacio-busqueda', {
+      acciones: [
+        { texto: 'Corregir el código', onClick: () => document.getElementById('codigo').focus() },
+        { texto: 'Buscar por mis reclamos', href: 'mis-reclamos.html' },
+      ],
+    });
+    return;
+  }
+
+  const c = r.reclamo;
+  document.getElementById('resultado').innerHTML = `
+    <div class="panel">
+      <div class="panel-head">
+        <div><h2>${c.id}</h2><p>${c.tipo} · registrado el ${Reclamos.fechaCorta(c.createdAt)}</p></div>
+        ${badge(c.estado)}
+      </div>
+      <p style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);line-height:1.6;">${c.descripcion}</p>
+      <h3 style="margin:24px 0 14px;font-size:calc(16px * var(--fs,1));color:var(--ink);">Historial</h3>
+      ${(c.historial||[]).map(h => `
+        <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);">
+          <span class="badge badge-proceso" style="height:fit-content;">${h.estado}</span>
+          <div><div style="font-size:calc(12.5px * var(--fs,1));color:var(--cyan-text);font-weight:700;">${Reclamos.fechaHora(h.fecha)}</div>
+          <div style="font-size:calc(13px * var(--fs,1));color:var(--muted);margin-top:3px;">${h.nota||''}</div></div>
+        </div>`).join('')}
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-primary btn-sm" href="/api/reclamos/${encodeURIComponent(c.id)}/pdf">Descargar PDF</a>
+        <a class="btn btn-ghost btn-sm" href="detalle.html?id=${encodeURIComponent(c.id)}">Ver detalle completo</a>
+      </div>
+    </div>`;
+});
+
+const pre = new URLSearchParams(location.search).get('codigo');
+if (pre) { document.getElementById('codigo').value = pre; form.requestSubmit(); }
+</script>
+
+</body>
+</html>

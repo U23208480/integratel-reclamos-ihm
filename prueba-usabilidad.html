@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de pruebas de usabilidad | Integratel</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.ut{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+.ut h1{font-size:30px;color:var(--ink);margin-bottom:6px}
+.ut h2{font-size:20px;color:var(--ink);margin:34px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+.ut .lead{color:var(--muted);margin-bottom:18px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:end;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.bar .field{margin:0;min-width:160px}
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+table.t th,table.t td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+table.t th{background:var(--cyan-light);color:var(--ink);font-size:12.5px}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;color:var(--ink);min-width:56px;display:inline-block}
+.mini{padding:6px 12px;font-size:12.5px}
+.sus label{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sus .opts{display:flex;gap:10px}
+.sus .opts label{display:flex;flex-direction:column;align-items:center;border:0;padding:0;font-size:12px;color:var(--muted)}
+.score{font-size:34px;font-weight:800;color:var(--navy)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:800;font-size:13px}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+@media(max-width:700px){.sus label{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="ut">
+  <h1>Registro de pruebas de usabilidad</h1>
+  <p class="lead">Herramienta para las sesiones con los prototipos de alta fidelidad: cronometra cada tarea, registra clics, éxito y observaciones, aplica la mini encuesta SUS y exporta los resultados para pegarlos en el documento. Los datos se guardan solo en este navegador.</p>
+
+  <div class="bar">
+    <div class="field"><label for="p-code">Participante</label>
+      <select class="select" id="p-code"><option>U1</option><option>U2</option><option>U3</option><option>U4</option><option>U5</option></select></div>
+    <div class="field"><label for="p-prod">Producto</label>
+      <select class="select" id="p-prod"><option value="Sistema">Sistema de reclamos</option><option value="Web">Página web</option></select></div>
+    <div class="field"><label for="p-dev">Dispositivo</label>
+      <select class="select" id="p-dev"><option>Móvil</option><option>Tablet</option><option>PC</option></select></div>
+    <button class="btn btn-ghost" id="btn-export">Exportar CSV</button>
+    <button class="btn btn-danger" id="btn-reset">Borrar datos</button>
+  </div>
+
+  <h2>1. Tareas (cronómetro)</h2>
+  <table class="t" id="tasks">
+    <thead><tr><th>Tarea</th><th>Descripción</th><th>Tiempo</th><th></th><th>Clics</th><th>Éxito</th><th>Observaciones</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <p class="note">Pulsa Iniciar, deja que la persona complete la tarea y pulsa Detener. Clics mínimos de referencia: T1 = 1, T2 = 3, T3 = 1, T4 = 1, T5 a T7 = 1.</p>
+
+  <h2>2. Mini encuesta SUS</h2>
+  <div class="sus" id="sus"></div>
+  <p style="margin-top:14px"><span class="score" id="score">—</span> <span class="pill" id="label"></span></p>
+  <p class="note">Escala 1 (totalmente en desacuerdo) a 5 (totalmente de acuerdo). Puntaje = (suma de ítems impares − 1 + suma de ítems pares: 5 − respuesta) × 2,5.</p>
+
+  <h2>3. Consolidado</h2>
+  <div id="summary"></div>
+</main>
+<script>
+const TASKS=[['T1','Sistema','Iniciar sesión con N.º de contrato o DNI'],['T2','Sistema','Registrar un nuevo reclamo y confirmarlo en el modal'],['T3','Sistema','Adjuntar un archivo de evidencia'],['T4','Sistema','Consultar el estado de un reclamo'],['T5','Web','Ubicar los Servicios de la empresa'],['T6','Web','Encontrar los datos de contacto'],['T7','Web','Ubicar el acceso al Libro de Reclamaciones desde el encabezado']];
+const SUS=['Creo que me gustaría usar este sistema con frecuencia.','Encontré el sistema innecesariamente complejo.','Pensé que el sistema era fácil de usar.','Creo que necesitaría ayuda de una persona con conocimientos técnicos para usar el sistema.','Encontré que las diversas funciones del sistema estaban bien integradas.','Pensé que había demasiada inconsistencia en este sistema.','Imagino que la mayoría de las personas aprenderían a usar este sistema rápidamente.','Encontré el sistema muy complicado de usar.','Me sentí muy seguro al usar el sistema.','Necesité aprender muchas cosas antes de poder usar el sistema.'];
+const KEY='integratel_ut_v1';
+let DB={};try{DB=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){DB={}}
+const $=s=>document.querySelector(s);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}}
+function rec(){const k=$('#p-code').value;DB[k]=DB[k]||{dev:'',tasks:{},sus:[]};DB[k].dev=$('#p-dev').value;return DB[k]}
+let run=null,t0=0,tick=null;
+function fmt(s){return (s||0).toFixed(1)+' s'}
+function renderTasks(){
+  const r=rec(),tb=$('#tasks tbody');tb.innerHTML='';
+  TASKS.filter(t=>t[1]===$('#p-prod').value).forEach(([id,,desc])=>{
+    const d=r.tasks[id]||{};
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><b>${id}</b></td><td>${desc}</td><td><span class="timer" id="tm-${id}">${fmt(d.time)}</span></td>
+    <td><button class="btn btn-primary mini" data-id="${id}">${run===id?'Detener':'Iniciar'}</button></td>
+    <td><input class="input" style="width:70px;padding:6px 8px" type="number" min="0" value="${d.clicks??''}" data-f="clicks" data-id="${id}"></td>
+    <td><input type="checkbox" ${d.ok?'checked':''} data-f="ok" data-id="${id}"></td>
+    <td><input class="input" style="min-width:160px;padding:6px 8px" value="${(d.obs||'').replace(/"/g,'&quot;')}" data-f="obs" data-id="${id}"></td>`;
+    tb.appendChild(tr);
+  });
+}
+$('#tasks').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-id]');if(!b)return;const id=b.dataset.id,r=rec();
+  if(run===id){clearInterval(tick);const el=(performance.now()-t0)/1000;r.tasks[id]=Object.assign(r.tasks[id]||{},{time:el});run=null;save();renderTasks();renderSummary();}
+  else if(!run){run=id;t0=performance.now();tick=setInterval(()=>{const el=$('#tm-'+id);if(el)el.textContent=fmt((performance.now()-t0)/1000)},100);renderTasks();}
+});
+$('#tasks').addEventListener('input',e=>{
+  const i=e.target;if(!i.dataset.f)return;const r=rec();r.tasks[i.dataset.id]=r.tasks[i.dataset.id]||{};
+  r.tasks[i.dataset.id][i.dataset.f]=i.type==='checkbox'?i.checked:(i.type==='number'?Number(i.value):i.value);save();renderSummary();
+});
+function renderSUS(){
+  const r=rec(),box=$('#sus');box.innerHTML='';
+  SUS.forEach((q,i)=>{
+    const l=document.createElement('label');
+    l.innerHTML=`<span><b>${i+1}.</b> ${q}</span><span class="opts">${[1,2,3,4,5].map(v=>`<label><input type="radio" name="s${i}" value="${v}" ${r.sus[i]===v?'checked':''}>${v}</label>`).join('')}</span>`;
+    box.appendChild(l);
+  });
+  showScore();
+}
+function susScore(a){if(a.filter(Boolean).length<10)return null;let s=0;a.forEach((v,i)=>{s+=(i%2===0)?v-1:5-v});return s*2.5}
+function showScore(){
+  const sc=susScore(rec().sus);$('#score').textContent=sc==null?'—':sc.toFixed(1);
+  const L=$('#label');if(sc==null){L.textContent='';return}
+  const [t,bg,c]=sc>80?['Excelente','#E2F6EC','#1E7A52']:sc>=68?['Bueno','#E3F6FB','#0093B0']:sc>=51?['Aceptable bajo','#FFF4DC','#C98A0A']:['Deficiente','#FBE7E7','#C73A3A'];
+  L.textContent=t;L.style.background=bg;L.style.color=c;
+}
+$('#sus').addEventListener('change',e=>{if(e.target.name&&e.target.name[0]==='s'){const r=rec();r.sus[Number(e.target.name.slice(1))]=Number(e.target.value);save();showScore();renderSummary()}});
+function avg(a){a=a.filter(x=>typeof x==='number'&&!isNaN(x));return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
+function renderSummary(){
+  const keys=['U1','U2','U3','U4','U5'];let h='<table class="t"><thead><tr><th>Tarea</th>'+keys.map(k=>`<th>${k} (s)</th>`).join('')+'<th>Promedio (s)</th><th>Éxito</th></tr></thead><tbody>';
+  TASKS.forEach(([id])=>{
+    const v=keys.map(k=>DB[k]&&DB[k].tasks[id]);const times=v.map(x=>x&&x.time);const ok=v.filter(x=>x&&x.ok).length,n=v.filter(x=>x&&(x.time!=null||x.ok!=null)).length;
+    const a=avg(times);h+=`<tr><td><b>${id}</b></td>`+times.map(x=>`<td>${x!=null?x.toFixed(1):''}</td>`).join('')+`<td>${a!=null?a.toFixed(1):''}</td><td>${n?ok+'/'+n:''}</td></tr>`;
+  });
+  const sc=keys.map(k=>DB[k]?susScore(DB[k].sus):null);const sa=avg(sc);
+  h+=`<tr><td><b>SUS</b></td>`+sc.map(x=>`<td>${x!=null?x.toFixed(1):''}</td>`).join('')+`<td>${sa!=null?sa.toFixed(1):''}</td><td></td></tr></tbody></table>`;
+  $('#summary').innerHTML=h;
+}
+function csv(){
+  const rows=[['Participante','Dispositivo','Tarea','Tiempo_s','Clics','Exito','Observaciones']];
+  Object.keys(DB).sort().forEach(k=>{const r=DB[k];Object.keys(r.tasks).forEach(id=>{const t=r.tasks[id];rows.push([k,r.dev,id,t.time!=null?t.time.toFixed(1):'',t.clicks??'',t.ok?'Si':'No',(t.obs||'').replace(/[\r\n;,]+/g,' ')])});rows.push([k,r.dev,'SUS',susScore(r.sus)??'','','',''])});
+  const blob=new Blob(['﻿'+rows.map(r=>r.join(';')).join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='resultados_usabilidad.csv';a.click();
+}
+['#p-code','#p-prod','#p-dev'].forEach(s=>$(s).addEventListener('change',()=>{if(run){clearInterval(tick);run=null}renderTasks();renderSUS();renderSummary()}));
+$('#btn-export').onclick=csv;
+$('#btn-reset').onclick=()=>{if(confirm('¿Borrar todos los datos guardados?')){DB={};save();renderTasks();renderSUS();renderSummary()}};
+renderTasks();renderSUS();renderSummary();
+</script>
+</body>
+</html>

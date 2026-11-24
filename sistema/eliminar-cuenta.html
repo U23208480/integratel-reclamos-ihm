@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliminar cuenta | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Eliminar mi cuenta</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div class="section-head" style="max-width:760px;margin-bottom:20px;">
+        <span class="kicker" style="background:var(--bad-bg);color:var(--bad);">Seguridad de la cuenta</span>
+        <h1 class="section-title" style="font-size:calc(34px * var(--fs,1));" id="titulo-paso">Eliminar mi cuenta</h1>
+        <p class="section-sub" id="sub-paso">Antes de borrarla, revisa si alguna de estas opciones resuelve lo que necesitas.</p>
+      </div>
+
+      <div class="pasos" id="pasos" aria-label="Progreso de la baja de cuenta"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 400px;gap:24px;align-items:start;" class="baja-layout">
+        <div>
+          <div id="paso1">
+            <div class="panel" style="margin-bottom:20px;">
+              <div class="panel-head"><div>
+                <h2>Quizá no necesites eliminar tu cuenta</h2>
+                <p>Estas tres opciones se pueden deshacer cuando quieras. Eliminar la cuenta, no.</p>
+              </div></div>
+              <div id="alternativas"></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head"><div>
+                <h2>¿Por qué quieres eliminar tu cuenta?</h2>
+                <p>Es opcional, pero nos ayuda a mejorar el portal.</p>
+              </div></div>
+              <div id="motivos" role="radiogroup" aria-label="Motivo de la eliminación"></div>
+              <div class="field" style="margin-top:18px;">
+                <label for="comentario">Cuéntanos más (opcional)</label>
+                <textarea class="textarea" id="comentario" rows="3" maxlength="300"
+                          placeholder="Máximo 300 caracteres"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="paso2" style="display:none;">
+            <div class="grid cols-2" style="margin-bottom:20px;">
+              <div class="panel" style="border-color:var(--bad);">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--bad)" stroke-width="2"><path d="M4 7.2h16M9.2 7.2V5.4h5.6v1.8M5.8 7.2 6.9 20.3h10.2L18.2 7.2"/></svg>
+                  <h2 style="font-size:calc(16px * var(--fs,1));color:var(--bad);">Se elimina para siempre</h2>
+                </div>
+                <ul class="lista-check elimina" id="lista-elimina"></ul>
+              </div>
+              <div class="panel" style="border-color:var(--good);">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--good-text)" stroke-width="2"><path d="M12 3 20 6v6.2c0 5-3.6 8.2-8 9.2-4.4-1-8-4.2-8-9.2V6l8-3z"/></svg>
+                  <h2 style="font-size:calc(16px * var(--fs,1));color:var(--good-text);">Se conserva por obligación legal</h2>
+                </div>
+                <ul class="lista-check conserva" id="lista-conserva"></ul>
+              </div>
+            </div>
+
+            <form class="panel" id="form-baja" novalidate>
+              <h2 style="font-size:calc(18px * var(--fs,1));color:var(--ink);margin-bottom:16px;">Confirma que entiendes lo que va a pasar</h2>
+              <label style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;cursor:pointer;">
+                <input type="checkbox" id="ck-acceso" style="width:22px;height:22px;accent-color:var(--cyan);margin-top:2px;">
+                <span style="font-size:calc(13.5px * var(--fs,1));color:var(--ink);">Entiendo que perderé el acceso al portal y que no podré recuperarlo con el mismo correo.</span>
+              </label>
+              <label style="display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;cursor:pointer;">
+                <input type="checkbox" id="ck-definitiva" style="width:22px;height:22px;accent-color:var(--cyan);margin-top:2px;">
+                <span style="font-size:calc(13.5px * var(--fs,1));color:var(--ink);">Entiendo que después de 30 días la eliminación es definitiva.</span>
+              </label>
+              <div class="field" style="max-width:360px;">
+                <label for="palabra">Escribe ELIMINAR para confirmar <span class="req">*</span></label>
+                <input class="input" id="palabra" autocomplete="off" spellcheck="false"
+                       style="font-family:ui-monospace,monospace;font-weight:800;letter-spacing:2px;">
+              </div>
+            </form>
+          </div>
+
+          <div id="paso3" style="display:none;">
+            <form class="panel" id="form-codigo" novalidate>
+              <div class="alerta alerta-info">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5.5" width="20" height="13" rx="2"/><path d="M2.6 7.4 12 13.6l9.4-6.2"/></svg>
+                <div><b>Código enviado a <span id="correo-destino">tu correo</span></b>
+                <p id="correo-modo">Si usas lector de pantalla, el código se anuncia al pegarlo desde el correo.</p></div>
+              </div>
+              <h2 style="font-size:calc(18px * var(--fs,1));color:var(--ink);margin:22px 0 14px;">Escribe el código de 6 dígitos</h2>
+              <div class="codigo" id="codigo-box" role="group" aria-label="Código de verificación de 6 dígitos">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 1 de 6">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 2 de 6">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 3 de 6">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 4 de 6">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 5 de 6">
+                <input inputmode="numeric" maxlength="1" aria-label="Dígito 6 de 6">
+              </div>
+              <div class="field-error" id="codigo-error" style="display:none;margin-top:12px;"></div>
+              <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-top:14px;">
+                El código vence en <b id="cuenta-regresiva">10:00</b>.
+                <button type="button" id="btn-reenviar" style="background:none;border:0;color:var(--cyan-text);font-weight:800;text-decoration:underline;cursor:pointer;">Reenviar código</button>
+              </p>
+            </form>
+          </div>
+
+          <div class="panel" style="margin-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+            <button class="btn btn-ghost" id="btn-atras">Cancelar</button>
+            <button class="btn btn-danger" id="btn-siguiente">Continuar con la eliminación</button>
+          </div>
+        </div>
+
+        <aside>
+          <div class="panel" style="background:var(--warn-bg);border-color:var(--warn);margin-bottom:18px;">
+            <h2 style="font-size:calc(16px * var(--fs,1));color:var(--warn-text);margin-bottom:10px;">Lo que debes saber</h2>
+            <p style="font-size:calc(13px * var(--fs,1));color:var(--ink);line-height:1.6;">
+              Tus reclamos no se borran: Integratel debe conservarlos según las normas de Osiptel y del
+              Libro de Reclamaciones de Indecopi. Lo que se elimina es tu cuenta de acceso y tus datos de contacto.
+            </p>
+          </div>
+          <div class="panel" style="margin-bottom:18px;">
+            <h2 style="font-size:calc(15px * var(--fs,1));color:var(--ink);margin-bottom:12px;">Resumen de tu cuenta</h2>
+            <div id="resumen-cuenta"></div>
+          </div>
+          <div class="panel">
+            <h2 style="font-size:calc(15px * var(--fs,1));color:var(--ink);margin-bottom:10px;">Este flujo también es accesible</h2>
+            <ul class="lista-check conserva" style="font-size:calc(12.5px * var(--fs,1));">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>Se recorre completo con el teclado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>El botón de borrar nunca es el foco inicial</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>Hay confirmación antes de cada acción</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>La confirmación no depende del color</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <style>@media (max-width:980px){ .baja-layout{ grid-template-columns:1fr !important; } }</style>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+<script>if (!Reclamos.requireSession()) { throw new Error('sin sesión'); }</script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+const dni = Reclamos.getSession();
+let paso = 1, datos = null, motivo = '', expira = null, tictac = null;
+
+const PASOS = ['Motivo', 'Qué se elimina', 'Verificación', 'Listo'];
+function pintarPasos() {
+  document.getElementById('pasos').innerHTML = PASOS.map((t, i) => {
+    const n = i + 1;
+    const cls = n < paso ? 'done' : (n === paso ? 'cur' : '');
+    return '<div class="paso ' + cls + '"><span class="n">' + (n < paso ? '✓' : n) + '</span><b>' + t + '</b></div>' +
+           (i < PASOS.length - 1 ? '<span class="paso-line"></span>' : '');
+  }).join('');
+}
+
+const TITULOS = [
+  ['Eliminar mi cuenta', 'Antes de borrarla, revisa si alguna de estas opciones resuelve lo que necesitas.'],
+  ['Qué se elimina y qué se conserva', 'Lee con calma: esta acción no se puede deshacer después de los 30 días de gracia.'],
+  ['Verifica que eres tú', 'Enviamos un código de 6 dígitos a tu correo. Vence en 10 minutos.'],
+];
+
+function mostrar() {
+  pintarPasos();
+  [1, 2, 3].forEach(n => document.getElementById('paso' + n).style.display = n === paso ? 'block' : 'none');
+  document.getElementById('titulo-paso').textContent = TITULOS[paso - 1][0];
+  document.getElementById('sub-paso').textContent = TITULOS[paso - 1][1];
+  const sig = document.getElementById('btn-siguiente');
+  sig.textContent = paso === 1 ? 'Continuar con la eliminación'
+                  : paso === 2 ? 'Enviar código de verificación' : 'Eliminar mi cuenta';
+  document.getElementById('btn-atras').textContent = paso === 1 ? 'Cancelar' : 'Volver';
+  window.scrollTo({ top: 0, behavior: A11Y.prefs.movimiento ? 'auto' : 'smooth' });
+}
+
+async function cargar() {
+  const r = await Reclamos.resumenCuenta(dni);
+  if (!r.ok) { showToast('No pudimos cargar tu cuenta', r.error || ''); return; }
+  datos = r;
+
+  const IC_ALT = {
+    silenciar: '<path d="M6 16.4v-5a6 6 0 0 1 8.4-5.5M18 11.4v5l2 3H4l2-3"/><path d="M10 19.4a2 2 0 0 0 4 0"/><path d="M3.4 3.4 20.6 20.6"/>',
+    desactivar: '<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
+    exportar: '<path d="M12 3.6v11.2"/><path d="M8 11l4 3.8 4-3.8"/><path d="M4.4 18.6v1.8h15.2v-1.8"/>',
+  };
+  const ALT = [
+    ['Silenciar las notificaciones', 'Dejas de recibir correos, pero conservas tus reclamos y su historial.', 'silenciar'],
+    ['Desactivar la cuenta por un tiempo', 'Nadie puede iniciar sesión. La reactivas cuando quieras.', 'desactivar'],
+    ['Descargar una copia de mis datos', 'Archivo con tus reclamos, respuestas y adjuntos.', 'exportar'],
+  ];
+  document.getElementById('alternativas').innerHTML = ALT.map(([t, d, a]) => `
+    <div class="ajuste" style="margin-bottom:12px;">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${IC_ALT[a]}</svg></span>
+      <span class="txt"><b>${t}</b><p>${d}</p></span>
+      <button class="btn btn-ghost btn-sm" data-alt="${a}">Elegir</button>
+    </div>`).join('');
+
+  document.getElementById('motivos').innerHTML = r.motivos.map((m, i) => `
+    <label style="display:flex;gap:12px;align-items:center;padding:11px 0;cursor:pointer;">
+      <input type="radio" name="motivo" value="${m}" ${i === 0 ? 'checked' : ''} style="width:20px;height:20px;accent-color:var(--cyan);">
+      <span style="font-size:calc(14px * var(--fs,1));color:var(--ink);">${m}</span>
+    </label>`).join('');
+  motivo = r.motivos[0];
+  document.querySelectorAll('[name=motivo]').forEach(x => x.addEventListener('change', () => { motivo = x.value; }));
+
+  const tic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>';
+  const cruz = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6.2 6.2 17.8 17.8M17.8 6.2 6.2 17.8"/></svg>';
+  document.getElementById('lista-elimina').innerHTML = r.seElimina.map(x => '<li>' + cruz + x + '</li>').join('');
+  document.getElementById('lista-conserva').innerHTML = r.seConserva.map(x => '<li>' + tic + x + '</li>').join('');
+
+  const u = r.user;
+  document.getElementById('resumen-cuenta').innerHTML = [
+    ['Titular', u.nombre], ['Correo', u.correo], ['Cuenta creada', Reclamos.fechaCorta(u.createdAt)],
+    ['Reclamos registrados', r.reclamos], ['Reclamos en curso', (r.reclamosAbiertos || []).length],
+  ].map(([k, v]) => `<div style="display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:calc(12.5px * var(--fs,1));">
+      <span style="color:var(--muted);">${k}</span><b style="color:var(--ink);">${v}</b></div>`).join('');
+
+  document.querySelectorAll('[data-alt]').forEach(b => b.addEventListener('click', async () => {
+    const a = b.getAttribute('data-alt');
+    if (a === 'exportar') { Reclamos.descargarMisDatos(dni); showToast('Descargando tus datos', 'Se guarda un archivo .json con todo tu historial.'); return; }
+    if (a === 'silenciar') {
+      const x = await Reclamos.silenciarAvisos(dni, true);
+      if (x.ok) showToast('Avisos silenciados', 'Conservas tu cuenta y tus reclamos.');
+      return;
+    }
+    if (a === 'desactivar') {
+      if (!confirm('Tu cuenta quedará desactivada. Podrás reactivarla cuando quieras. ¿Continuamos?')) return;
+      const x = await Reclamos.desactivarCuenta(dni);
+      if (x.ok) { showToast('Cuenta desactivada', 'Puedes reactivarla desde el inicio de sesión.'); Reclamos.clearSession(); setTimeout(() => location.href = 'index.html', 1200); }
+    }
+  }));
+}
+
+function codigoEscrito() {
+  return Array.from(document.querySelectorAll('#codigo-box input')).map(i => i.value).join('');
+}
+
+document.getElementById('codigo-box').addEventListener('input', (e) => {
+  const inputs = Array.from(document.querySelectorAll('#codigo-box input'));
+  const i = inputs.indexOf(e.target);
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+  if (e.target.value && i < 5) inputs[i + 1].focus();
+});
+document.getElementById('codigo-box').addEventListener('keydown', (e) => {
+  const inputs = Array.from(document.querySelectorAll('#codigo-box input'));
+  const i = inputs.indexOf(e.target);
+  if (e.key === 'Backspace' && !e.target.value && i > 0) inputs[i - 1].focus();
+});
+document.getElementById('codigo-box').addEventListener('paste', (e) => {
+  const t = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6);
+  if (!t) return;
+  e.preventDefault();
+  const inputs = Array.from(document.querySelectorAll('#codigo-box input'));
+  t.split('').forEach((d, i) => inputs[i].value = d);
+  inputs[Math.min(t.length, 5)].focus();
+  A11Y.anunciar('Código de ' + t.length + ' dígitos pegado');
+});
+
+function arrancarReloj() {
+  clearInterval(tictac);
+  expira = Date.now() + 10 * 60000;
+  tictac = setInterval(() => {
+    const s = Math.max(0, Math.round((expira - Date.now()) / 1000));
+    document.getElementById('cuenta-regresiva').textContent =
+      String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    if (!s) clearInterval(tictac);
+  }, 1000);
+}
+
+async function solicitar() {
+  const payload = {
+    motivo, comentario: document.getElementById('comentario').value,
+    palabra: document.getElementById('palabra').value,
+    confirmaciones: {
+      acceso: document.getElementById('ck-acceso').checked,
+      definitiva: document.getElementById('ck-definitiva').checked,
+    },
+  };
+  const ok = Estados.validar(document.getElementById('form-baja'), [
+    { id: 'palabra', etiqueta: 'confirmación', test: (v) => v.trim().toUpperCase() === 'ELIMINAR',
+      mensaje: 'Escribe exactamente la palabra ELIMINAR para confirmar.' },
+  ]);
+  if (!ok) return;
+  if (!payload.confirmaciones.acceso || !payload.confirmaciones.definitiva) {
+    showToast('Faltan confirmaciones', 'Marca las dos casillas antes de continuar.');
+    document.getElementById('ck-acceso').focus();
+    return;
+  }
+  const r = await Reclamos.solicitarBaja(dni, payload);
+  if (!r.ok) { showToast('No pudimos continuar', r.error || ''); return; }
+  document.getElementById('correo-destino').textContent = (r.correo && r.correo.destinatario) || 'tu correo';
+  document.getElementById('correo-modo').textContent = (r.correo && r.correo.simulado)
+    ? 'Envío en modo demo: el correo con el código quedó guardado en backend/sent_emails/.'
+    : 'Revisa tu bandeja de entrada y la carpeta de no deseados.';
+  paso = 3; mostrar(); arrancarReloj();
+  setTimeout(() => document.querySelector('#codigo-box input').focus(), 120);
+}
+
+async function confirmar() {
+  const cod = codigoEscrito();
+  const err = document.getElementById('codigo-error');
+  if (cod.length !== 6) {
+    err.style.display = 'block';
+    err.textContent = 'Faltan dígitos: el código tiene 6 números.';
+    document.querySelector('#codigo-box input').focus();
+    A11Y.anunciar('Faltan dígitos: el código tiene 6 números.');
+    return;
+  }
+  const r = await Reclamos.confirmarBaja(dni, { codigo: cod, motivo, comentario: document.getElementById('comentario').value });
+  if (!r.ok) {
+    err.style.display = 'block'; err.textContent = r.error || 'No pudimos verificar el código.';
+    A11Y.anunciar(err.textContent);
+    return;
+  }
+  err.style.display = 'none';
+  sessionStorage.setItem('integratel_baja', JSON.stringify({ dni, ...r }));
+  Reclamos.clearSession();
+  location.href = 'cuenta-eliminada.html?dni=' + encodeURIComponent(dni);
+}
+
+document.getElementById('btn-siguiente').addEventListener('click', () => {
+  if (paso === 1) { paso = 2; mostrar(); }
+  else if (paso === 2) solicitar();
+  else confirmar();
+});
+document.getElementById('btn-atras').addEventListener('click', () => {
+  if (paso === 1) location.href = 'perfil.html';
+  else { paso--; mostrar(); }
+});
+document.getElementById('btn-reenviar').addEventListener('click', async () => {
+  await solicitar(); showToast('Código reenviado', 'Revisa tu correo otra vez.');
+});
+
+mostrar();
+cargar();
+</script>
+
+</body>
+</html>

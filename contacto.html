@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/estados.js" defer></script>
+<script src="assets/js/a11y.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">IT</span><span>Integratel Perú<small>Telecomunicaciones</small></span></a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="contacto.html" class="active">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="contacto.html" class="btn btn-ghost btn-sm">Contáctanos</a>
+      <a href="sistema/index.html" class="btn btn-primary btn-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h6M9 19h3"/></svg>
+        Libro de Reclamaciones
+      </a>
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+    </button>
+  </div>
+  <div class="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html" class="active">Contacto</a>
+    <a href="sistema/index.html" class="btn btn-primary btn-block" style="margin-top:8px;">Libro de Reclamaciones</a>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="hero-blob" style="width:420px;height:420px;background:radial-gradient(circle,#0093B0,transparent 70%);top:-160px;right:-80px;"></div>
+  <div class="container" style="position:relative;z-index:2;" id="contenido" role="main" tabindex="-1">
+    <span class="hero-eyebrow">Contacto</span>
+    <h1 style="font-size:clamp(30px,4.5vw,46px);margin-top:16px;max-width:640px;">Hablemos sobre tu proyecto</h1>
+    <div class="breadcrumb"><a href="index.html" style="color:#9FBED3;">Inicio</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg><span>Contacto</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container hero-grid" style="align-items:flex-start;">
+
+    <div data-reveal>
+      <div class="panel" style="box-shadow:var(--shadow-md);">
+        <h2 style="font-size:calc(22px * var(--fs,1));color:var(--ink);margin-bottom:6px;">Envíanos un mensaje</h2>
+        <p style="color:var(--muted);font-size:calc(14px * var(--fs,1));margin-bottom:26px;">Completa el formulario y te responderemos en menos de 24 horas hábiles.</p>
+        <form id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="c-nombre">Nombre completo <span class="req">*</span></label>
+              <input class="input" id="c-nombre" name="nombre" autocomplete="name" type="text" required placeholder="Ej. María Fernández">
+              <span class="field-error">Ingresa tu nombre completo.</span>
+            </div>
+            <div class="field">
+              <label for="c-correo">Correo electrónico <span class="req">*</span></label>
+              <input class="input" id="c-correo" name="correo" autocomplete="email" type="email" required placeholder="correo@ejemplo.com">
+              <span class="field-error">Ingresa un correo válido.</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="c-telefono">Teléfono</label>
+              <input class="input" id="c-telefono" name="telefono" autocomplete="tel" type="tel" placeholder="+51 9XX XXX XXX">
+            </div>
+            <div class="field">
+              <label for="c-motivo">Motivo de contacto <span class="req">*</span></label>
+              <select class="select" id="c-motivo" name="motivo" required>
+                <option value="">Selecciona una opción</option>
+                <option>Consulta comercial</option>
+                <option>Coordinación de instalación</option>
+                <option>Alianza / proveedores</option>
+                <option>Prensa</option>
+                <option>Otro</option>
+              </select>
+              <span class="field-error">Selecciona un motivo.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="c-mensaje">Mensaje <span class="req">*</span></label>
+            <textarea class="textarea" id="c-mensaje" name="mensaje" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+            <span class="field-error">Escribe tu mensaje.</span>
+          </div>
+          <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-bottom:18px;">
+            ¿Tienes un reclamo sobre un servicio ya contratado? Usa el
+            <a href="sistema/index.html" style="color:var(--cyan-text);font-weight:700;">Libro de Reclamaciones</a> para un seguimiento formal con número de ticket.
+          </p>
+          <button type="submit" class="btn btn-primary btn-block">
+            Enviar mensaje
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div data-reveal data-delay="150">
+      <div class="grid" style="gap:16px;margin-bottom:26px;">
+        <div class="card" style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="card-icon" style="margin-bottom:0;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h3 style="font-size:calc(15.5px * var(--fs,1));">Oficina principal</h3><p>Jr. Domingo Martínez Luján 1130, Surquillo, Lima - Perú</p></div>
+        </div>
+        <div class="card" style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="card-icon" style="margin-bottom:0;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><h3 style="font-size:calc(15.5px * var(--fs,1));">Central telefónica</h3><p>(01) 555-0192 · Lunes a viernes, 8:00 a.m. – 6:00 p.m.</p></div>
+        </div>
+        <div class="card" style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="card-icon" style="margin-bottom:0;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><h3 style="font-size:calc(15.5px * var(--fs,1));">Correo institucional</h3><p>contacto@integratel.pe</p></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="height:230px;background:linear-gradient(135deg,var(--navy),var(--steel));display:flex;align-items:center;justify-content:center;color:#fff;position:relative;">
+          <div class="hero-blob" style="width:220px;height:220px;background:radial-gradient(circle,#00B4D8,transparent 70%);top:-60px;left:-40px;opacity:.5;"></div>
+          <div style="text-align:center;position:relative;z-index:2;">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" style="margin:0 auto 10px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <b style="font-size:calc(13.5px * var(--fs,1));">Surquillo, Lima — Perú</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2 class="section-title">¿Tienes dudas?</h2>
+    </div>
+    <div class="grid cols-2" style="max-width:920px;margin:0 auto;">
+      <div class="card" data-reveal>
+        <h3 style="font-size:calc(15.5px * var(--fs,1));">¿Cómo registro un reclamo?</h3>
+        <p>Ingresa al <a href="sistema/index.html" style="color:var(--cyan-text);font-weight:700;">Libro de Reclamaciones</a>, identifícate con tu número de contrato o DNI y completa el formulario de nuevo reclamo.</p>
+      </div>
+      <div class="card" data-reveal data-delay="80">
+        <h3 style="font-size:calc(15.5px * var(--fs,1));">¿Cuánto demora la respuesta?</h3>
+        <p>El sistema genera un ticket de seguimiento inmediato; el área responsable evalúa cada caso y actualiza el estado en línea.</p>
+      </div>
+      <div class="card" data-reveal data-delay="160">
+        <h3 style="font-size:calc(15.5px * var(--fs,1));">¿Necesito crear una cuenta?</h3>
+        <p>No. Basta con tu número de contrato o DNI para registrar y consultar tus reclamos, sin contraseñas.</p>
+      </div>
+      <div class="card" data-reveal data-delay="240">
+        <h3 style="font-size:calc(15.5px * var(--fs,1));">¿Puedo adjuntar evidencia?</h3>
+        <p>Sí, puedes adjuntar fotos o documentos que respalden tu reclamo al momento de registrarlo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff;margin-bottom:14px;"><span class="brand-mark">IT</span><span>Integratel Perú</span></a>
+        <p style="font-size:calc(13.5px * var(--fs,1));line-height:1.7;color:#9FBED3;max-width:280px;">Empresa peruana de telecomunicaciones dedicada al despliegue, instalación, mantenimiento y soporte de infraestructura de redes fijas y móviles.</p>
+        <div class="footer-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg><span style="font-size:calc(12.5px * var(--fs,1));color:#CFE9F1;">RUC 20100017491 · Activo y Habido en SUNAT</span></div>
+      </div>
+      <div><h4>Enlaces rápidos</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+      <div><h4>Servicios</h4><ul><li><a href="servicios.html">Instalación de redes</a></li><li><a href="servicios.html">Mantenimiento</a></li><li><a href="servicios.html">Soporte técnico</a></li><li><a href="sistema/index.html">Libro de Reclamaciones</a></li></ul></div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li style="display:flex;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Jr. Domingo Martínez Luján 1130, Surquillo, Lima</li>
+          <li style="display:flex;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (01) 555-0192</li>
+          <li style="display:flex;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> contacto@integratel.pe</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Integratel Perú S.A.A. — Proyecto académico, Herramientas de Prototipado (UTP).</span>
+      <a href="sistema/index.html" style="font-weight:700;color:#00B4D8;">Libro de Reclamaciones →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

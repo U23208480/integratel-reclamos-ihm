@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estados de pantalla | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Catálogo de estados</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div class="section-head" style="max-width:780px;margin-bottom:22px;">
+        <span class="kicker">Catálogo del AP3</span>
+        <h1 class="section-title" style="font-size:calc(34px * var(--fs,1));">Los diez estados de pantalla</h1>
+        <p class="section-sub">Cada estado se muestra tal como aparece en el sistema. Los que dependen del
+        servidor se pueden provocar de verdad con el parámetro <code>?simular=</code>, sin tocar la base de datos.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start;" class="est-layout">
+        <aside class="panel" style="position:sticky;top:18px;">
+          <h2 style="font-size:calc(15px * var(--fs,1));color:var(--ink);margin-bottom:14px;">Elige un estado</h2>
+          <div id="menu" role="tablist" aria-label="Estados de pantalla" aria-orientation="vertical"></div>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line);">
+            <p style="font-size:calc(12px * var(--fs,1));color:var(--muted);line-height:1.6;">
+              Los cuatro requisitos se cumplen en todos: señal visual, mensaje en lenguaje del usuario,
+              acción de salida y la navegación principal siempre visible.</p>
+          </div>
+        </aside>
+
+        <div>
+          <div class="panel" style="margin-bottom:20px;">
+            <div class="panel-head">
+              <div><h2 id="est-nombre">—</h2><p id="est-cuando">—</p></div>
+              <span class="badge badge-navy" id="est-num">Estado</span>
+            </div>
+            <div id="vista" style="min-height:300px;"></div>
+          </div>
+
+          <div class="grid cols-2" style="margin-bottom:20px;">
+            <div class="panel">
+              <h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);margin-bottom:12px;">Cómo se provoca en el sistema real</h3>
+              <p id="est-real" style="font-size:calc(13px * var(--fs,1));color:var(--muted);line-height:1.65;"></p>
+              <div id="est-enlace" style="margin-top:14px;"></div>
+            </div>
+            <div class="panel">
+              <h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);margin-bottom:12px;">Criterios WCAG que atiende</h3>
+              <ul class="lista-check conserva" id="est-wcag" style="font-size:calc(12.5px * var(--fs,1));"></ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);margin-bottom:12px;">Código que lo dibuja</h3>
+            <pre style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;
+                        font-size:calc(12.5px * var(--fs,1));color:var(--ink);line-height:1.6;"><code id="est-codigo"></code></pre>
+          </div>
+        </div>
+      </div>
+      <style>@media (max-width:980px){ .est-layout{ grid-template-columns:1fr !important; }
+        .est-layout aside{ position:static !important; } }</style>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+const L = [
+  { k:'vacio-inicial', n:1, nombre:'Vacío inicial', cuando:'La persona entra por primera vez y todavía no tiene reclamos.',
+    real:'Se muestra en Mis reclamos cuando la consulta a la base de datos devuelve cero filas para ese DNI.',
+    enlace:['Ver en Mis reclamos','mis-reclamos.html?simular=vacio'],
+    wcag:['1.3.1 Información y relaciones','2.4.6 Encabezados y etiquetas','3.3.5 Ayuda contextual'],
+    acciones:[{texto:'Registrar mi primer reclamo',href:'nuevo-reclamo.html'},{texto:'Ver cómo funciona',href:'seguimiento.html'}],
+    codigo:"Estados.pintar('#lista', 'vacio-inicial', {\n  acciones: [{ texto: 'Registrar mi primer reclamo', href: 'nuevo-reclamo.html' }]\n});" },
+
+  { k:'vacio-busqueda', n:2, nombre:'Vacío por búsqueda', cuando:'La búsqueda es válida pero no devuelve resultados.',
+    real:'En Seguimiento, al consultar un código con formato correcto que no existe en la tabla reclamos.',
+    enlace:['Probar en Seguimiento','seguimiento.html?codigo=REC-2026-99999'],
+    wcag:['3.3.1 Identificación de errores','3.3.3 Sugerencia ante errores','2.4.3 Orden del foco'],
+    acciones:[{texto:'Corregir el código',onClick:()=>pintar('vacio-busqueda')},{texto:'Buscar en mis reclamos',href:'mis-reclamos.html'}],
+    codigo:"Estados.pintar('#resultado', 'vacio-busqueda', {\n  acciones: [{ texto: 'Corregir el código', onClick: () => campo.focus() }]\n});" },
+
+  { k:'vacio-historial', n:3, nombre:'Vacío por historial', cuando:'La sección existe pero no hay nada acumulado todavía.',
+    real:'En Notificaciones, cuando la tabla notificaciones no tiene filas para ese usuario.',
+    enlace:['Ver en Notificaciones','notificaciones.html'],
+    wcag:['1.3.1 Información y relaciones','4.1.3 Mensajes de estado'],
+    acciones:[{texto:'Registrar un reclamo',href:'nuevo-reclamo.html'},{texto:'Elegir cómo me avisan',href:'perfil.html'}],
+    codigo:"Estados.pintar('#lista', 'vacio-historial', {\n  acciones: [{ texto: 'Registrar un reclamo', href: 'nuevo-reclamo.html' }]\n});" },
+
+  { k:'__carga', n:4, nombre:'Carga', cuando:'La respuesta del servidor tarda y hay que sostener la espera.',
+    real:'Se activa en toda petición. Con ?simular=lento el backend espera 2,5 segundos para que el esqueleto sea visible.',
+    enlace:['Ver carga lenta real','mis-reclamos.html?simular=lento'],
+    wcag:['4.1.3 Mensajes de estado','2.2.1 Tiempo ajustable','2.3.3 Animación por interacción'],
+    codigo:"const detener = Estados.cargando('#lista', 4, 'Cargando tus reclamos…');\nconst r = await Reclamos.getClaimsSimulado();\nif (detener) detener();" },
+
+  { k:'error_conexion', n:5, nombre:'Error de conexión', cuando:'No hay red o el servidor no responde.',
+    real:'Con ?simular=error-conexion el backend corta la respuesta y devuelve codigo="error_conexion".',
+    enlace:['Provocar el error real','mis-reclamos.html?simular=error-conexion'],
+    wcag:['3.3.1 Identificación de errores','1.4.1 Uso del color','4.1.3 Mensajes de estado'],
+    acciones:[{texto:'Reintentar',onClick:()=>pintar('error_conexion')},{texto:'Ver mis reclamos guardados',href:'mis-reclamos.html'}],
+    codigo:"if (Estados.desdeRespuesta('#lista', r, {\n  acciones: [{ texto: 'Reintentar', onClick: cargar }]\n})) return;" },
+
+  { k:'error_sistema', n:6, nombre:'Error del sistema', cuando:'El servicio falla por nuestra causa, no por la de la persona.',
+    real:'Con ?simular=error-sistema el backend responde con un código de incidente que se muestra en pantalla.',
+    enlace:['Provocar el error real','mis-reclamos.html?simular=error-sistema'],
+    wcag:['3.3.1 Identificación de errores','3.3.3 Sugerencia ante errores'],
+    acciones:[{texto:'Reintentar',onClick:()=>pintar('error_sistema')},{texto:'Hablar con un asesor',href:'perfil.html'}],
+    detalle:'Código del incidente: INC-2026-0471 · guardado para soporte',
+    codigo:"Estados.pintar('#lista', 'error_sistema', {\n  detalle: 'Código del incidente: ' + r.incidente\n});" },
+
+  { k:'__validacion', n:7, nombre:'Error de validación', cuando:'El formulario tiene datos incompletos o mal escritos.',
+    real:'En Nuevo reclamo y en Seguimiento. El resumen recibe el foco y cada campo lleva su mensaje en texto.',
+    enlace:['Probar en Nuevo reclamo','nuevo-reclamo.html'],
+    wcag:['3.3.1 Identificación de errores','3.3.2 Etiquetas e instrucciones','3.3.3 Sugerencia ante errores','2.4.3 Orden del foco'],
+    codigo:"Estados.validar(form, [{\n  id: 'codigo', etiqueta: 'Código de seguimiento',\n  test: (v) => /^REC-\\d{4}-\\d{5}$/.test(v),\n  mensaje: 'El código debe tener el formato REC-AAAA-NNNNN.'\n}]);" },
+
+  { k:'no_disponible', n:8, nombre:'Contenido no disponible', cuando:'El recurso existió pero ya no se puede mostrar en línea.',
+    real:'Con ?simular=no-disponible en el detalle de un reclamo archivado.',
+    enlace:['Provocarlo en un detalle','mis-reclamos.html?simular=no-disponible'],
+    wcag:['2.4.2 Título de la página','3.3.5 Ayuda contextual'],
+    acciones:[{texto:'Pedir copia certificada',href:'perfil.html'},{texto:'Volver a mis reclamos',href:'mis-reclamos.html'}],
+    codigo:"Estados.pintar('#detalle', 'no_disponible', {\n  acciones: [{ texto: 'Pedir copia certificada', href: 'perfil.html' }]\n});" },
+
+  { k:'sin_permisos', n:9, nombre:'Sin permisos / sesión vencida', cuando:'La sesión caducó o se intenta ver algo de otra persona.',
+    real:'Con ?simular=sin-permisos, y de verdad al pasar el tiempo de inactividad que la persona eligió (20, 40 o 60 min).',
+    enlace:['Provocarlo','mis-reclamos.html?simular=sin-permisos'],
+    wcag:['2.2.1 Tiempo ajustable','2.2.6 Tiempos de espera','3.3.4 Prevención de errores'],
+    acciones:[{texto:'Volver a iniciar sesión',href:'index.html'},{texto:'Consultar sin sesión',href:'seguimiento.html'}],
+    codigo:"Estados.pintar('#lista', 'sin_permisos', {\n  acciones: [{ texto: 'Volver a iniciar sesión', href: 'index.html' }]\n});" },
+
+  { k:'exito', n:10, nombre:'Éxito', cuando:'La acción terminó y hay que confirmar qué pasó y qué sigue.',
+    real:'Al registrar un reclamo, al guardar accesibilidad y al cerrar la baja de cuenta.',
+    enlace:['Ver en Nuevo reclamo','nuevo-reclamo.html'],
+    wcag:['4.1.3 Mensajes de estado','1.4.1 Uso del color','3.3.4 Prevención de errores'],
+    titulo:'Tu reclamo quedó registrado',
+    mensaje:'Guardamos el código REC-2026-00042 y te enviamos el comprobante a tu correo. Vas a recibir un aviso cada vez que cambie de estado.',
+    acciones:[{texto:'Descargar comprobante',href:'mis-reclamos.html'},{texto:'Ver el reclamo',href:'mis-reclamos.html'}],
+    codigo:"Estados.pintar('#resultado', 'exito', {\n  titulo: 'Tu reclamo quedó registrado',\n  mensaje: 'Guardamos el código ' + r.reclamo.id + '…'\n});" },
+];
+
+const menu = document.getElementById('menu');
+menu.innerHTML = L.map((e, i) => `
+  <button class="est-item" role="tab" id="tab-${i}" aria-selected="false" data-i="${i}"
+          style="display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 11px;margin-bottom:5px;
+                 border:1.4px solid var(--line);border-radius:11px;background:var(--surface);cursor:pointer;">
+    <span style="width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+                 background:var(--navy-light);color:var(--ink);font-weight:800;font-size:calc(12px * var(--fs,1));">${e.n}</span>
+    <b style="font-size:calc(12.8px * var(--fs,1));color:var(--ink);font-weight:700;">${e.nombre}</b>
+  </button>`).join('');
+
+let actual = -1;
+
+function marcar(i) {
+  Array.from(menu.children).forEach((b, j) => {
+    const on = j === i;
+    b.setAttribute('aria-selected', String(on));
+    b.style.borderColor = on ? 'var(--cyan)' : 'var(--line)';
+    b.style.background = on ? 'var(--cyan-light)' : 'var(--surface)';
+    b.style.outline = 'none';
+  });
+}
+
+function pintar(clave) {
+  const i = L.findIndex(e => e.k === clave);
+  const e = L[i];
+  actual = i;
+  marcar(i);
+
+  document.getElementById('est-nombre').textContent = e.nombre;
+  document.getElementById('est-cuando').textContent = e.cuando;
+  document.getElementById('est-num').textContent = 'Estado ' + e.n + ' de 10';
+  document.getElementById('est-real').textContent = e.real;
+  document.getElementById('est-enlace').innerHTML = e.enlace
+    ? `<a class="btn btn-ghost btn-sm" href="${e.enlace[1]}">${e.enlace[0]}</a>` : '';
+  document.getElementById('est-wcag').innerHTML = e.wcag.map(w =>
+    '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.2 12.6 9.2 17.8 20 6.8"/></svg>' + w + '</li>').join('');
+  document.getElementById('est-codigo').textContent = e.codigo;
+
+  const vista = document.getElementById('vista');
+
+  if (e.k === '__carga') {
+    const detener = Estados.cargando(vista, 4, 'Cargando tus reclamos…');
+    setTimeout(() => { if (detener) detener(); }, 9000);
+    return;
+  }
+
+  if (e.k === '__validacion') {
+    vista.innerHTML = `
+      <form id="demo-form" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="d-tipo">Tipo de reclamo <span class="req">*</span></label>
+            <select class="input" id="d-tipo"><option value="">Selecciona una opción</option>
+              <option>Facturación y cobros</option><option>Avería / corte de servicio</option></select>
+          </div>
+          <div class="field">
+            <label for="d-correo">Correo de contacto <span class="req">*</span></label>
+            <input class="input" id="d-correo" placeholder="nombre@correo.com">
+            <div class="field-hint">Ahí te enviamos el comprobante y las respuestas.</div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="d-desc">Describe lo que pasó <span class="req">*</span></label>
+          <textarea class="textarea" id="d-desc" rows="3" placeholder="Mínimo 30 caracteres"></textarea>
+          <div class="field-hint">Cuenta qué pasó, cuándo y qué esperabas que pasara.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar el reclamo</button>
+      </form>`;
+    const f = document.getElementById('demo-form');
+    f.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const ok = Estados.validar(f, [
+        { id:'d-tipo', etiqueta:'Tipo de reclamo', test:(v)=>!!v,
+          mensaje:'Elige el tipo de reclamo: sin eso no sabemos a qué área derivarlo.' },
+        { id:'d-correo', etiqueta:'Correo de contacto', test:(v)=>/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v),
+          mensaje:'Escribe un correo válido, por ejemplo nombre@correo.com.' },
+        { id:'d-desc', etiqueta:'Descripción', test:(v)=>v.length>=30,
+          mensaje:'La descripción necesita al menos 30 caracteres para que el asesor entienda el caso.' },
+      ]);
+      if (ok) Estados.pintar(vista, 'exito', { titulo:'Formulario válido',
+        mensaje:'Los tres campos pasaron la validación. En el sistema real, acá se registraría el reclamo.' });
+    });
+    f.requestSubmit();
+    return;
+  }
+
+  Estados.pintar(vista, e.k, {
+    titulo: e.titulo, mensaje: e.mensaje, detalle: e.detalle, acciones: e.acciones,
+  });
+}
+
+menu.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-i]');
+  if (b) pintar(L[+b.getAttribute('data-i')].k);
+});
+menu.addEventListener('keydown', (ev) => {
+  if (ev.key !== 'ArrowDown' && ev.key !== 'ArrowUp') return;
+  ev.preventDefault();
+  const i = (actual + (ev.key === 'ArrowDown' ? 1 : L.length - 1)) % L.length;
+  pintar(L[i].k);
+  menu.children[i].focus();
+});
+
+const q = new URLSearchParams(location.search).get('estado');
+pintar(L.some(e => e.k === q) ? q : 'vacio-inicial');
+</script>
+
+</body>
+</html>

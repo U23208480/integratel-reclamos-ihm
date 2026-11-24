@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Kit | Integratel Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/estados.js" defer></script>
+<script src="assets/js/a11y.js" defer></script>
+
+<style>
+.kit{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+.kit h1{font-size:calc(34px * var(--fs,1));color:var(--ink);margin-bottom:6px}
+.kit .lead{color:var(--muted);margin-bottom:32px}
+.kit h2{font-size:calc(22px * var(--fs,1));color:var(--ink);margin:44px 0 6px;padding-top:18px;border-top:1px solid var(--line)}
+.kit h3{font-size:calc(14px * var(--fs,1));color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:22px 0 10px}
+.kit .note{color:var(--muted);font-size:calc(14px * var(--fs,1));margin-bottom:14px}
+.states{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+.state{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm,10px);padding:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.state small{font-size:calc(12px * var(--fs,1));font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.sw{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);font-size:12px}
+.sw i{display:block;height:48px}.sw b{display:block;padding:6px 8px 0}.sw span{display:block;padding:0 8px 8px;color:var(--muted)}
+/* estados simulados (para documentar) */
+.btn.is-hover.btn-primary{background:var(--cyan-dark);transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,180,216,.42)}
+.btn.is-hover.btn-ghost{border-color:var(--cyan);color:var(--cyan-text)}
+.btn.is-hover.btn-navy{background:var(--navy-2);transform:translateY(-2px)}
+.btn.is-active{transform:translateY(1px) scale(.98);box-shadow:none}
+.btn.is-focus,.input.is-focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 4px rgba(0,180,216,.14)}
+.btn.is-focus{box-shadow:0 0 0 4px rgba(0,180,216,.35)}
+.demo-nav{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;flex-wrap:wrap}
+.demo-nav a{padding:9px 16px;border-radius:10px;font-weight:600;color:var(--ink);text-decoration:none}
+.demo-nav a.is-hover{background:var(--cyan-light);color:var(--cyan-text)}
+.demo-nav a.active{background:var(--navy);color:#fff}
+.demo-nav a.off{opacity:.5;pointer-events:none}
+.demo-side{background:var(--navy);border-radius:14px;padding:12px;width:240px;display:flex;flex-direction:column;gap:4px}
+.demo-side a{padding:11px 14px;border-radius:10px;color:#C7DCEA;font-weight:600;text-decoration:none}
+.demo-side a.is-hover{background:rgba(255,255,255,.06);color:#fff}
+.demo-side a.active{background:var(--cyan);color:var(--on-accent)}
+.demo-bottom{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:360px}
+.demo-bottom a{flex:1;text-align:center;padding:12px 6px;font-size:calc(12px * var(--fs,1));font-weight:700;color:var(--muted);text-decoration:none}
+.demo-bottom a.active{color:var(--cyan-text);background:var(--cyan-light)}
+</style>
+</head>
+<body>
+<main class="kit" id="contenido" role="main" tabindex="-1">
+  <h1>Integratel UI Kit</h1>
+  <p class="lead">Mini Design System del Sistema de Gestión de Reclamos y la web institucional. Componentes agrupados en <b>Botones</b>, <b>Formularios</b>, <b>Navegación</b>, <b>Tarjetas</b> y <b>Alertas</b>, cada uno con sus estados: normal, hover, activo, foco y deshabilitado. Usa las mismas clases del sistema real (<code>assets/css/style.css</code>).</p>
+
+  <h2>Fundamentos</h2>
+  <h3>Paleta de colores</h3>
+  <div class="swatches">
+    <div class="sw"><i style="background:#0B2545"></i><b>--navy</b><span>#0B2545</span></div>
+    <div class="sw"><i style="background:#0E2E56"></i><b>--navy-2</b><span>#0E2E56</span></div>
+    <div class="sw"><i style="background:#134074"></i><b>--steel</b><span>#134074</span></div>
+    <div class="sw"><i style="background:#00B4D8"></i><b>--cyan</b><span>#00B4D8</span></div>
+    <div class="sw"><i style="background:#0093B0"></i><b>--cyan-dark</b><span>#0093B0</span></div>
+    <div class="sw"><i style="background:#E3F6FB"></i><b>--cyan-light</b><span>#E3F6FB</span></div>
+    <div class="sw"><i style="background:#172333"></i><b>--ink</b><span>#172333</span></div>
+    <div class="sw"><i style="background:#5B6673"></i><b>--muted</b><span>#5B6673</span></div>
+    <div class="sw"><i style="background:#1E9E64"></i><b>--good</b><span>#1E9E64</span></div>
+    <div class="sw"><i style="background:#C98A0A"></i><b>--warn</b><span>#C98A0A</span></div>
+    <div class="sw"><i style="background:#C73A3A"></i><b>--bad</b><span>#C73A3A</span></div>
+  </div>
+  <h3>Tipografía — Plus Jakarta Sans</h3>
+  <p style="font-size:calc(34px * var(--fs,1));font-weight:800;color:var(--ink)">Título 34/800</p>
+  <p style="font-size:calc(22px * var(--fs,1));font-weight:700;color:var(--ink)">Subtítulo 22/700</p>
+  <p style="font-size:16px">Cuerpo 16/500 — Registra tu reclamo y recibe seguimiento.</p>
+  <p style="font-size:calc(13px * var(--fs,1));color:var(--muted)">Detalle 13/500 — textos de apoyo y ayudas.</p>
+
+  <h2>1. Botones</h2>
+  <p class="note">Variantes: primario (acción principal), navy (acción fuerte), ghost (secundario) y peligro. Tamaños: normal y <code>.btn-sm</code>.</p>
+  <h3>Botón primario</h3>
+  <div class="states">
+    <div class="state"><small>Normal</small><button class="btn btn-primary">Enviar reclamo</button></div>
+    <div class="state"><small>Hover</small><button class="btn btn-primary is-hover">Enviar reclamo</button></div>
+    <div class="state"><small>Activo (presionado)</small><button class="btn btn-primary is-active">Enviar reclamo</button></div>
+    <div class="state"><small>Foco</small><button class="btn btn-primary is-focus">Enviar reclamo</button></div>
+    <div class="state"><small>Deshabilitado</small><button class="btn btn-primary" disabled>Enviar reclamo</button></div>
+  </div>
+  <h3>Botón secundario (ghost)</h3>
+  <div class="states">
+    <div class="state"><small>Normal</small><button class="btn btn-ghost">Cancelar</button></div>
+    <div class="state"><small>Hover</small><button class="btn btn-ghost is-hover">Cancelar</button></div>
+    <div class="state"><small>Activo</small><button class="btn btn-ghost is-active">Cancelar</button></div>
+    <div class="state"><small>Foco</small><button class="btn btn-ghost is-focus">Cancelar</button></div>
+    <div class="state"><small>Deshabilitado</small><button class="btn btn-ghost" disabled>Cancelar</button></div>
+  </div>
+  <h3>Otras variantes</h3>
+  <div class="states">
+    <div class="state"><small>Navy</small><button class="btn btn-navy">Ingresar</button></div>
+    <div class="state"><small>Navy · hover</small><button class="btn btn-navy is-hover">Ingresar</button></div>
+    <div class="state"><small>Peligro</small><button class="btn btn-danger">Eliminar</button></div>
+    <div class="state"><small>Pequeño</small><button class="btn btn-primary btn-sm">+ Nuevo</button></div>
+  </div>
+
+  <h2>2. Formularios</h2>
+  <p class="note">Estructura: <code>.field</code> = etiqueta + control + ayuda/error. El asterisco rojo indica campo obligatorio.</p>
+  <div class="states">
+    <div class="state" style="align-items:stretch"><small>Normal</small><div class="field" style="margin:0"><label for="kit-1">N° de contrato o DNI <span class="req">*</span></label><input id="kit-1" class="input" placeholder="Ej. 71234567"><div class="field-hint">Dato de ayuda.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Hover / Foco</small><div class="field" style="margin:0"><label for="kit-2">N° de contrato o DNI <span class="req">*</span></label><input id="kit-2" class="input is-focus" value="71234567"></div></div>
+    <div class="state" style="align-items:stretch"><small>Error</small><div class="field invalid" style="margin:0"><label for="kit-3">Correo <span class="req">*</span></label><input id="kit-3" class="input" value="juan@correo"><div class="field-error">Ingresa un correo válido.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Deshabilitado</small><div class="field" style="margin:0"><label for="kit-4">Estado</label><input id="kit-4" class="input" value="Solo lectura" disabled></div></div>
+    <div class="state" style="align-items:stretch"><small>Lista desplegable</small><div class="field" style="margin:0"><label for="kit-5">Tipo de reclamo</label><select id="kit-5" class="select"><option>Facturación</option><option>Servicio</option></select></div></div>
+    <div class="state" style="align-items:stretch"><small>Área de texto</small><div class="field" style="margin:0"><label for="kit-desc">Descripción</label><textarea id="kit-desc" class="textarea" rows="2" placeholder="Describe el problema"></textarea></div></div>
+  </div>
+  <h3>Insignias de estado y filtros</h3>
+  <div class="tag-row">
+    <span class="badge badge-recibido"><i class="badge-dot"></i>Recibido</span>
+    <span class="badge badge-proceso"><i class="badge-dot"></i>En proceso</span>
+    <span class="badge badge-atendido"><i class="badge-dot"></i>Atendido</span>
+    <span class="badge badge-improcedente"><i class="badge-dot"></i>Improcedente</span>
+    <span class="tag">Filtro normal</span><span class="tag active">Filtro activo</span>
+  </div>
+
+  <h2>3. Navegación</h2>
+  <p class="note">Menú superior (web), panel lateral (sistema en escritorio) y barra inferior (sistema en celular).</p>
+  <h3>Menú superior — normal / hover / activo / deshabilitado</h3>
+  <div class="demo-nav"><a href="#">Inicio</a><a href="#" class="is-hover">Servicios (hover)</a><a href="#" class="active">Contacto (activo)</a><a href="#" class="off">Portal (deshabilitado)</a></div>
+  <h3>Panel lateral del sistema</h3>
+  <div class="demo-side"><a href="#">Nuevo reclamo</a><a href="#" class="is-hover">Mis reclamos (hover)</a><a href="#" class="active">Perfil (activo)</a></div>
+  <h3>Barra inferior (móvil)</h3>
+  <div class="demo-bottom"><a href="#" class="active">Reclamos</a><a href="#">Nuevo</a><a href="#">Perfil</a></div>
+
+  <h2>4. Tarjetas</h2>
+  <p class="note">Contenedor de 16 px de radio con borde y sombra suave. Estados: normal, hover (se eleva 6 px) y seleccionada.</p>
+  <div class="states">
+    <div class="state" style="align-items:stretch"><small>Tarjeta de servicio · normal</small><div class="card" style="padding:18px"><b style="color:var(--ink)">Internet fibra</b><p style="color:var(--muted);font-size:calc(13px * var(--fs,1));margin-top:4px">Conectividad de alta velocidad.</p></div></div>
+    <div class="state" style="align-items:stretch"><small>Hover</small><div class="card" style="padding:18px;transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent"><b style="color:var(--ink)">Internet fibra</b><p style="color:var(--muted);font-size:calc(13px * var(--fs,1));margin-top:4px">Conectividad de alta velocidad.</p></div></div>
+    <div class="state" style="align-items:stretch"><small>Tarjeta KPI</small><div class="kpi"><span>Recibidos</span><b>1</b><span>Pendientes de revisión</span></div></div>
+    <div class="state" style="align-items:stretch"><small>Fila de reclamo · hover</small><div class="claim-row" style="grid-template-columns:auto 1fr;background:var(--cyan-light);border-color:#CDEFF7"><span class="claim-id">INT-00231</span><div><div class="claim-title">Avería / corte de servicio</div><div class="claim-meta">En proceso</div></div></div></div>
+  </div>
+
+  <h2>5. Alertas</h2>
+  <p class="note">Mensajes de retroalimentación. Siempre combinan color, borde lateral y texto (no dependen solo del color).</p>
+  <div class="states" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+    <div class="state" style="align-items:stretch"><small>Información</small><div class="alert"><div><b>Tu reclamo está en revisión</b>Te avisaremos por correo.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Éxito</small><div class="alert alert-success"><div><b>Reclamo registrado</b>Tu ticket es INT-00232.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Advertencia</small><div class="alert alert-warning"><div><b>Falta un dato</b>Adjunta evidencia si la tienes.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Error</small><div class="alert alert-error"><div><b>No se pudo enviar</b>Revisa tu conexión e inténtalo de nuevo.</div></div></div>
+    <div class="state" style="align-items:stretch"><small>Toast</small><div class="toast" style="animation:none;min-width:0"><div><b>Reclamo registrado</b><span>Revisa Mis reclamos</span></div></div></div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accesibilidad | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Centro de accesibilidad</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div class="section-head" style="max-width:820px;margin-bottom:26px;">
+        <span class="kicker">Centro de accesibilidad</span>
+        <h1 class="section-title" style="font-size:calc(34px * var(--fs,1));" id="grupo-titulo">Ajustes visuales</h1>
+        <p class="section-sub" id="grupo-sub">Los cambios se aplican al instante y quedan guardados en tu cuenta.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start;" class="a11y-layout">
+        <div class="panel" style="position:sticky;top:98px;">
+          <nav class="a11y-tabs" aria-label="Secciones de accesibilidad">
+            <a href="#visual" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2.2 12S5.8 5.4 12 5.4 21.8 12 21.8 12 18.2 18.6 12 18.6 2.2 12 2.2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Visual<small>8 ajustes</small></span></a>
+            <a href="#auditivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M11 5.2 6.2 9.2H3v5.6h3.2L11 18.8z"/><path d="M14.8 9a4.2 4.2 0 0 1 0 6"/></svg><span>Auditivo<small>6 ajustes</small></span></a>
+            <a href="#navegacion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2" y="6.5" width="20" height="11" rx="1.5"/><path d="M7.5 14h9"/></svg><span>Navegación y teclado<small>5 ajustes</small></span></a>
+            <a href="#idioma"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6M12 3a13.5 13.5 0 0 1 0 18"/></svg><span>Idioma y lectura fácil<small>4 ajustes</small></span></a>
+            <a href="#resumen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 3.4H7.4a2 2 0 0 0-2 2v13.2a2 2 0 0 0 2 2h9.2a2 2 0 0 0 2-2V8z"/><path d="M9 14.4l2 2 4-4.4"/></svg><span>Resumen de conformidad<small>WCAG 2.1 AA</small></span></a>
+          </nav>
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0;">
+          <button class="btn btn-ghost btn-sm btn-block" id="btn-reset-todo">Restablecer todo</button>
+          <p style="font-size:calc(11.5px * var(--fs,1));color:var(--muted);margin-top:12px;line-height:1.5;">
+            El portal ya cumple WCAG 2.1 AA sin activar ningún ajuste. Este módulo lo adapta a ti.
+          </p>
+        </div>
+
+        <div>
+          <div id="ajustes"></div>
+          <div id="previa" style="margin-top:4px;"></div>
+        </div>
+      </div>
+      <style>@media (max-width:980px){ .a11y-layout{ grid-template-columns:1fr !important; } }</style>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+<script>if (!Reclamos.requireSession()) { throw new Error('sin sesión'); }</script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+// Los 23 ajustes del modulo, agrupados en las cuatro categorias del AP3.
+const GRUPOS = {
+  visual: { titulo: 'Ajustes visuales', sub: 'Ocho controles para el tamaño, el color y el movimiento de la interfaz.', items: [
+    { k:'fs', tipo:'slider', ic:'texto', t:'Tamaño de texto', wcag:'1.4.4 AA',
+      d:'Escala todo el texto del 100 % al 200 % sin romper la maqueta ni perder contenido.' },
+    { k:'fuente', tipo:'sw', on:'legible', off:'sistema', ic:'texto', t:'Tipografía de alta legibilidad', wcag:'1.4.12 AA',
+      d:'Cambia a una fuente sin serifas con letras diferenciadas (b, d, p, q).' },
+    { k:'espaciado', tipo:'seg', ic:'sliders', t:'Espaciado del texto', wcag:'1.4.12 AA',
+      d:'Aumenta interlineado, separación entre letras y entre párrafos.',
+      ops:[['normal','Normal'],['amplio','Amplio'],['muy-amplio','Muy amplio']] },
+    { k:'tema', tipo:'seg', ic:'sol', t:'Tema de la interfaz', wcag:'1.4.8 AAA',
+      d:'Modo día, modo noche o automático según tu sistema operativo.',
+      ops:[['dia','Modo día'],['noche','Modo noche'],['auto','Automático']] },
+    { k:'contraste', tipo:'seg', ic:'contraste', t:'Nivel de contraste', wcag:'1.4.6 AAA',
+      d:'Normal cumple AA (4.5:1). Alto llega a 19.56:1 con negro, blanco y amarillo. Invertido invierte toda la página.',
+      ops:[['normal','Normal'],['alto','Alto'],['invertido','Invertido']] },
+    { k:'enlaces', tipo:'sw', ic:'enlace', t:'Resaltar enlaces', wcag:'1.4.1 A',
+      d:'Subraya los enlaces y no deja el color como única señal.' },
+    { k:'movimiento', tipo:'sw', ic:'movimiento', t:'Reducir movimiento', wcag:'2.3.3 AAA',
+      d:'Desactiva animaciones, carruseles automáticos y efectos de desplazamiento.' },
+    { k:'guia', tipo:'sw', ic:'cursor', t:'Guía de lectura y cursor grande', wcag:'2.4.11 AA',
+      d:'Una regla acompaña la línea que lees y el puntero se agranda.' },
+  ]},
+  auditivo: { titulo: 'Ajustes auditivos', sub: 'Para quien no puede oír el contenido y para quien prefiere escucharlo en vez de leerlo.', items: [
+    { k:'voz', tipo:'sw', ic:'voz', t:'Lectura por voz de la página', wcag:'1.1.1 A',
+      d:'Un reproductor fijo lee títulos, campos y mensajes de error en voz alta.' },
+    { k:'vozVel', tipo:'seg', ic:'sliders', t:'Velocidad de la voz', wcag:'1.4.2 A',
+      d:'Usa la voz en español que tenga instalada tu sistema operativo.',
+      ops:[[0.75,'0,75×'],[1,'1×'],[1.25,'1,25×'],[1.5,'1,5×']] },
+    { k:'subtitulos', tipo:'sw', ic:'subtitulos', t:'Subtítulos en los videos', wcag:'1.2.2 A',
+      d:'Subtítulos sincronizados en español en los tutoriales del portal.' },
+    { k:'transcripcion', tipo:'sw', ic:'archivo', t:'Transcripción descargable', wcag:'1.2.8 AAA',
+      d:'Texto completo del video, con marcas de tiempo, en .txt y .pdf.' },
+    { k:'lsp', tipo:'sw', ic:'mano', t:'Intérprete de Lengua de Señas Peruana', wcag:'1.2.6 AAA',
+      d:'Ventana del intérprete sobre el contenido, movible y redimensionable.' },
+    { k:'alertasVisuales', tipo:'sw', ic:'campana', t:'Alertas visuales en vez de sonido', wcag:'1.4.2 A',
+      d:'Cada aviso sonoro se duplica como mensaje en pantalla y vibración en el celular.' },
+  ]},
+  navegacion: { titulo: 'Navegación y teclado', sub: 'El portal completo se puede usar sin mouse y con lector de pantalla.', items: [
+    { k:'foco', tipo:'sw', ic:'teclado', t:'Indicador de foco reforzado', wcag:'2.4.7 AA',
+      d:'Contorno de 3 px y halo exterior: el foco se ve sobre cualquier fondo.' },
+    { k:'saltar', tipo:'sw', ic:'saltar', t:'Enlace «Saltar al contenido principal»', wcag:'2.4.1 A',
+      d:'Primer elemento enfocable de cada página; salta el menú repetido.' },
+    { k:'atajos', tipo:'sw', ic:'teclado', t:'Atajos de teclado', wcag:'2.1.4 A',
+      d:'Alt + A accesibilidad · Alt + D tema · Alt + V voz · Alt + N nuevo reclamo · Alt + S seguimiento · Alt + L idioma.' },
+    { k:'sesion', tipo:'seg', ic:'reloj', t:'Tiempo de sesión', wcag:'2.2.1 A',
+      d:'Avisa 2 minutos antes de expirar y permite extender sin perder lo escrito.',
+      ops:[[20,'20 min'],[40,'40 min'],[0,'Sin límite']] },
+    { k:'confirmar', tipo:'sw', ic:'escudo', t:'Confirmar acciones irreversibles', wcag:'3.3.4 AA',
+      d:'Pide confirmación antes de enviar un reclamo o eliminar la cuenta.' },
+  ]},
+  idioma: { titulo: 'Idioma y lectura fácil', sub: 'Cuatro idiomas y una versión en lenguaje sencillo del mismo contenido.', items: [
+    { k:'idioma', tipo:'idiomas', ic:'globo', t:'Idioma de la interfaz', wcag:'3.1.1 A',
+      d:'El atributo lang de la página cambia junto con el idioma, para que el lector de pantalla use la pronunciación correcta.' },
+    { k:'lecturaFacil', tipo:'sw', ic:'archivo', t:'Lectura fácil', wcag:'3.1.5 AAA',
+      d:'Reescribe las pantallas en frases cortas, sin tecnicismos y con un solo mensaje por párrafo.' },
+    { k:'glosario', tipo:'sw', ic:'ayuda', t:'Glosario de términos técnicos', wcag:'3.1.3 AAA',
+      d:'Palabras como «improcedente» o «fibra óptica» muestran su definición al enfocarlas.' },
+    { k:'traducir', tipo:'sw', ic:'shuffle', t:'Traducir mi reclamo al enviarlo', wcag:'3.1.2 AA',
+      d:'Puedes escribir en quechua o aymara: el asesor recibe también la versión en español.' },
+  ]},
+};
+
+const ICONS = {
+  texto:'<path d="M2.6 18.6 7.4 5.8l4.8 12.8M4.2 14.4h6.4M14.6 18.6 18 9.8l3.4 8.8M15.8 15.8h4.4"/>',
+  sliders:'<path d="M3.4 8h7.2M14.6 8h6M3.4 16h4M11.4 16h9.2"/><circle cx="12.6" cy="8" r="2"/><circle cx="9.4" cy="16" r="2"/>',
+  sol:'<circle cx="12" cy="12" r="4.4"/><path d="M12 2.2v2.4M12 19.4v2.4M2.2 12h2.4M19.4 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7"/>',
+  contraste:'<circle cx="12" cy="12" r="9"/><path d="M12 3.4a8.6 8.6 0 0 1 0 17.2z" fill="currentColor"/>',
+  enlace:'<path d="M10.2 13.8a4.6 4.6 0 0 0 6.5 0l2.1-2.1a4.6 4.6 0 0 0-6.5-6.5l-1 1M13.8 10.2a4.6 4.6 0 0 0-6.5 0l-2.1 2.1a4.6 4.6 0 0 0 6.5 6.5l1-1"/>',
+  movimiento:'<path d="M3.5 8.5h9M3.5 12.5h12M3.5 16.5h7M20.5 5.5 14 20"/>',
+  cursor:'<path d="M5.5 3.2 19 11.4l-6.2 1.4L9.6 19.6z"/>',
+  voz:'<path d="M11 5.2 6.2 9.2H3v5.6h3.2L11 18.8z"/><path d="M14.8 9a4.2 4.2 0 0 1 0 6M17.6 6a8 8 0 0 1 0 12"/>',
+  subtitulos:'<rect x="2" y="5.5" width="20" height="13" rx="2"/><path d="M7 10.5h3M7 14h5M14 10.5h3M14 14h3"/>',
+  archivo:'<path d="M14 3.4H7.4a2 2 0 0 0-2 2v13.2a2 2 0 0 0 2 2h9.2a2 2 0 0 0 2-2V8z"/><path d="M13.8 3.4V8h4.8"/>',
+  mano:'<path d="M9 11.5V5.6a1.6 1.6 0 0 1 3.2 0v5.9M12.2 11.5V4.6a1.6 1.6 0 0 1 3.2 0v6.9M15.4 11.5V7a1.6 1.6 0 0 1 3.2 0v6.3a7 7 0 0 1-7 7h-.8a7 7 0 0 1-7-7v-2.1a1.6 1.6 0 0 1 3.2 0v1.3"/>',
+  campana:'<path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/>',
+  teclado:'<rect x="2" y="6.5" width="20" height="11" rx="1.5"/><path d="M5.6 10h.01M9 10h.01M12.4 10h.01M15.8 10h.01M19 10h.01M7.5 14h9"/>',
+  saltar:'<path d="M4.6 12h14.8M13.4 6l6 6-6 6"/>',
+  reloj:'<circle cx="12" cy="12" r="9"/><path d="M12 7.2v5.4l3.6 2.1"/>',
+  escudo:'<path d="M12 3 20 6v6.2c0 5-3.6 8.2-8 9.2-4.4-1-8-4.2-8-9.2V6l8-3z"/><path d="M8.8 12.2l2.4 2.4 4-4.6"/>',
+  globo:'<circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/>',
+  ayuda:'<circle cx="12" cy="12" r="9"/><path d="M9.4 9.6a2.6 2.6 0 1 1 3.8 2.4c-.8.5-1.2 1-1.2 1.9v.5M12 17.6v.01"/>',
+  shuffle:'<path d="M3.6 6.6h4l9 11h4M3.6 17.6h4l3-3.6M17.8 3.8l2.8 2.8-2.8 2.8M17.8 14.8l2.8 2.8-2.8 2.8"/>',
+};
+const sv = (d) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[d]||'')+'</svg>';
+const FS_VALS = [100,125,150,200], FS_ETQ = {100:'100 %',125:'125 %',150:'150 %',200:'200 %'};
+const IDIOMAS = [['es','Español','Perú','es-PE'],['en','English','United States','en-US'],
+                 ['qu','Runasimi','Quechua sureño','qu-PE'],['ay','Aymar aru','Aymara','ay-PE']];
+
+let tab = location.hash.replace('#','') || 'visual';
+if (!GRUPOS[tab] && tab !== 'resumen') tab = 'visual';
+
+function pintar() {
+  const p = A11Y.prefs;
+  document.querySelectorAll('.a11y-tabs a').forEach(a =>
+    a.classList.toggle('active', a.getAttribute('href') === '#' + tab));
+
+  if (tab === 'resumen') { pintarResumen(); return; }
+  const g = GRUPOS[tab];
+  document.getElementById('grupo-titulo').textContent = g.titulo;
+  document.getElementById('grupo-sub').textContent = g.sub;
+
+  document.getElementById('ajustes').innerHTML = g.items.map(it => {
+    const v = p[it.k];
+    const cab = '<div class="head"><span class="ic">'+sv(it.ic)+'</span>'+
+      '<span class="txt"><b>'+it.t+'</b><span class="wcag">'+it.wcag+'</span><p>'+it.d+'</p></span>';
+    if (it.tipo === 'sw') {
+      const on = it.on ? v === it.on : !!v;
+      return '<div class="ajuste'+(on?' on':'')+'">'+
+        '<span class="ic">'+sv(it.ic)+'</span>'+
+        '<span class="txt"><b>'+it.t+'</b><span class="wcag">'+it.wcag+'</span><p>'+it.d+'</p></span>'+
+        '<span style="font-size:calc(12px * var(--fs,1));font-weight:800;color:'+(on?'var(--cyan-text)':'var(--muted)')+';">'+
+        (on?'Activado':'Desactivado')+'</span>'+
+        '<button class="sw" role="switch" aria-checked="'+on+'" data-sw="'+it.k+'"'+
+        (it.on?' data-on="'+it.on+'" data-off="'+it.off+'"':'')+' aria-label="'+it.t+'"></button></div>';
+    }
+    if (it.tipo === 'seg') {
+      return '<div class="ajuste col">'+cab+'</div><div class="ctrl"><div class="seg" role="group" aria-label="'+it.t+'">'+
+        it.ops.map(([val,lab]) => '<button type="button" data-seg="'+it.k+'" data-val="'+val+'" aria-pressed="'+
+          (String(v)===String(val))+'">'+lab+'</button>').join('')+'</div></div></div>';
+    }
+    if (it.tipo === 'slider') {
+      const i = Math.max(0, FS_VALS.indexOf(Number(v)));
+      return '<div class="ajuste col">'+cab+'</div><div class="ctrl"><div class="fs-slider">'+
+        '<input type="range" id="ac-fs" min="0" max="3" step="1" value="'+i+'" aria-label="Tamaño de texto" aria-valuetext="'+FS_ETQ[v]+'">'+
+        '<span class="val" id="ac-fs-val">'+FS_ETQ[v]+'</span></div></div></div>';
+    }
+    if (it.tipo === 'idiomas') {
+      return '<div class="ajuste col">'+cab+'</div><div class="ctrl"><div class="grid cols-4" style="gap:14px;">'+
+        IDIOMAS.map(([k,n,nat,tag]) => '<button type="button" data-seg="idioma" data-val="'+k+'" aria-pressed="'+(v===k)+'"'+
+          ' style="text-align:left;padding:14px 16px;border-radius:14px;border:'+(v===k?'2px solid var(--cyan)':'1.3px solid var(--line-2)')+
+          ';background:'+(v===k?'var(--cyan-light)':'transparent')+';cursor:pointer;">'+
+          '<b style="display:block;font-size:calc(14.5px * var(--fs,1));color:var(--ink);">'+n+'</b>'+
+          '<span style="font-size:calc(11.5px * var(--fs,1));color:var(--muted);">'+nat+'</span>'+
+          '<span class="tag-lang" style="display:inline-block;margin-top:6px;">'+tag+'</span></button>').join('')+
+        '</div></div></div>';
+    }
+    return '';
+  }).join('');
+
+  document.getElementById('ajustes').querySelectorAll('[data-sw]').forEach(b => b.addEventListener('click', () => {
+    const k = b.getAttribute('data-sw');
+    if (b.hasAttribute('data-on')) A11Y.set(k, A11Y.prefs[k] === b.getAttribute('data-on') ? b.getAttribute('data-off') : b.getAttribute('data-on'));
+    else A11Y.set(k, !A11Y.prefs[k]);
+    pintar();
+  }));
+  document.getElementById('ajustes').querySelectorAll('[data-seg]').forEach(b => b.addEventListener('click', () => {
+    let val = b.getAttribute('data-val');
+    if (!isNaN(Number(val)) && val !== '') val = Number(val);
+    A11Y.set(b.getAttribute('data-seg'), val); pintar();
+  }));
+  const r = document.getElementById('ac-fs');
+  if (r) r.addEventListener('input', () => { A11Y.set('fs', FS_VALS[Number(r.value)]); pintar(); });
+  pintarPrevia();
+}
+
+function pintarPrevia() {
+  const p = A11Y.prefs;
+  document.getElementById('previa').innerHTML =
+    '<div class="panel"><div style="font-size:calc(10.5px * var(--fs,1));font-weight:800;letter-spacing:.12em;'+
+    'text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Vista previa en vivo</div>'+
+    '<div style="border:1px solid var(--line-2);border-radius:12px;padding:20px;background:var(--surface);">'+
+    '<b style="font-size:calc(16px * var(--fs,1));color:var(--ink);">Reclamo REC-2026-00001</b>'+
+    '<p style="font-size:calc(13px * var(--fs,1));color:var(--muted);margin-top:6px;">Estado: En proceso · actualizado hoy</p>'+
+    '<a href="#" style="font-size:calc(13px * var(--fs,1));color:var(--cyan-text);font-weight:800;display:inline-block;margin-top:10px;">Ver el detalle del reclamo</a>'+
+    '</div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;font-size:calc(11.5px * var(--fs,1));color:var(--muted);">'+
+    '<span>Texto: <b style="color:var(--ink);">'+FS_ETQ[p.fs]+'</b></span><span>Tema: <b style="color:var(--ink);">'+p.tema+'</b></span>'+
+    '<span>Contraste: <b style="color:var(--ink);">'+p.contraste+'</b></span><span>Idioma: <b style="color:var(--ink);">'+p.idioma+'</b></span>'+
+    '</div></div>';
+}
+
+function pintarResumen() {
+  document.getElementById('grupo-titulo').textContent = 'Resumen de conformidad';
+  document.getElementById('grupo-sub').textContent = 'Integratel Perú S.A.A. · Portal de Reclamos · WCAG 2.1, nivel AA.';
+  const CRIT = [
+    ['1.4.3','Contraste mínimo','AA','Mínimo medido 4.86:1 en modo día y 6.50:1 en modo noche.'],
+    ['1.4.4','Redimensionar texto','AA','Escala del 100 % al 200 % sin pérdida de contenido.'],
+    ['1.4.10','Reflujo','AA','Desde el 150 % el contenido pasa a una sola columna.'],
+    ['1.4.1','Uso del color','A','Cada estado lleva etiqueta escrita e ícono además del color.'],
+    ['1.1.1','Contenido no textual','A','Lectura por voz y texto alternativo en todo ícono.'],
+    ['2.1.1','Teclado','A','Todo el portal se recorre sin mouse.'],
+    ['2.4.1','Evitar bloques','A','Enlace «Saltar al contenido principal».'],
+    ['2.4.7','Foco visible','AA','Contorno de 3 px con halo exterior.'],
+    ['2.2.1','Tiempo ajustable','A','Aviso 2 minutos antes y opción de extender.'],
+    ['2.3.3','Animación por interacción','AAA','«Reducir movimiento» desactiva animaciones.'],
+    ['3.1.1','Idioma de la página','A','El atributo lang cambia con el idioma elegido.'],
+    ['3.3.1','Identificación de errores','A','Error en texto, junto al campo, con resumen enfocable.'],
+    ['3.3.4','Prevención de errores','AA','Tres pasos y 30 días de gracia en la baja de cuenta.'],
+    ['4.1.3','Mensajes de estado','AA','Avisos con aria-live que no roban el foco.'],
+  ];
+  document.getElementById('ajustes').innerHTML =
+    '<div class="grid cols-4" style="margin-bottom:22px;">'+
+    [['23','ajustes','disponibles'],['14','criterios','verificados aquí'],['3','temas','día, noche, alto contraste'],['4','idiomas','es · en · qu · ay']]
+      .map(([n,t,s]) => '<div class="kpi"><b>'+n+'</b><span><b style="color:var(--ink);">'+t+'</b><br>'+s+'</span></div>').join('')+
+    '</div><div class="panel"><table style="width:100%;border-collapse:collapse;">'+
+    '<thead><tr>'+['Criterio','Nombre','Nivel','Cómo se cumple'].map(h =>
+      '<th style="text-align:left;padding:10px 8px;border-bottom:2px solid var(--line);font-size:calc(11px * var(--fs,1));'+
+      'text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">'+h+'</th>').join('')+'</tr></thead><tbody>'+
+    CRIT.map(([c,n,niv,k]) => '<tr>'+
+      '<td style="padding:11px 8px;border-bottom:1px solid var(--line);font-weight:800;color:var(--cyan-text);font-family:ui-monospace,monospace;font-size:calc(12.5px * var(--fs,1));">'+c+'</td>'+
+      '<td style="padding:11px 8px;border-bottom:1px solid var(--line);font-size:calc(13px * var(--fs,1));color:var(--ink);">'+n+'</td>'+
+      '<td style="padding:11px 8px;border-bottom:1px solid var(--line);"><span class="badge badge-proceso">'+niv+'</span></td>'+
+      '<td style="padding:11px 8px;border-bottom:1px solid var(--line);font-size:calc(12.5px * var(--fs,1));color:var(--muted);">'+k+'</td></tr>').join('')+
+    '</tbody></table></div>';
+  document.getElementById('previa').innerHTML = '';
+}
+
+document.querySelectorAll('.a11y-tabs a').forEach(a => a.addEventListener('click', (e) => {
+  e.preventDefault(); tab = a.getAttribute('href').replace('#',''); history.replaceState(null,'','#'+tab); pintar();
+}));
+document.getElementById('btn-reset-todo').addEventListener('click', async () => {
+  Object.entries(A11Y.DEFECTO).forEach(([k,v]) => A11Y.set(k,v));
+  const dni = Reclamos.getSession();
+  if (dni) await Reclamos.restablecerAccesibilidad(dni);
+  pintar(); showToast('Ajustes restablecidos', 'Volvieron a los valores por defecto.');
+});
+document.addEventListener('a11y:cambio', pintarPrevia);
+pintar();
+</script>
+
+</body>
+</html>

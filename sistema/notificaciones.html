@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notificaciones | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Notificaciones</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div class="section-head" style="max-width:720px;margin-bottom:22px;">
+        <span class="kicker">Mi cuenta</span>
+        <h1 class="section-title" style="font-size:calc(34px * var(--fs,1));">Notificaciones</h1>
+        <p class="section-sub">Cada cambio de estado de tus reclamos aparece aquí y también te llega por correo.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><h2>Bandeja de avisos</h2><p id="notif-sub">Los más recientes primero</p></div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-ghost btn-sm" id="btn-leidas">Marcar todas como leídas</button>
+            <button class="btn btn-ghost btn-sm" id="btn-silenciar">Silenciar avisos</button>
+          </div>
+        </div>
+        <div id="lista"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+<script>if (!Reclamos.requireSession()) { throw new Error('sin sesión'); }</script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+const dni = Reclamos.getSession();
+const sim = new URLSearchParams(location.search).get('simular');
+
+const ICN = {
+  reclamo: '<path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6"/>',
+  cuenta: '<path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>',
+  seguridad: '<path d="M12 3 20 6v6.2c0 5-3.6 8.2-8 9.2-4.4-1-8-4.2-8-9.2V6l8-3z"/>',
+};
+
+async function cargar() {
+  const detener = Estados.cargando('#lista', 3, 'Cargando tus avisos…');
+  const r = await Reclamos.getNotificaciones(dni, sim);
+  if (detener) detener();
+
+  if (Estados.desdeRespuesta('#lista', r, {
+    acciones: [{ texto: 'Reintentar', onClick: cargar },
+               { texto: 'Ir a mis reclamos', href: 'mis-reclamos.html' }],
+  })) return;
+
+  const n = r.notificaciones || [];
+  document.getElementById('notif-sub').textContent =
+    n.length ? (n.length + (n.length === 1 ? ' aviso' : ' avisos')) : 'Sin avisos por ahora';
+
+  if (!n.length) {
+    // Estado 3 del catálogo: vacío por historial
+    Estados.pintar('#lista', 'vacio-historial', {
+      acciones: [
+        { texto: 'Registrar un reclamo', href: 'nuevo-reclamo.html' },
+        { texto: 'Elegir cómo quiero que me avisen', href: 'perfil.html' },
+      ],
+    });
+    return;
+  }
+
+  document.getElementById('lista').innerHTML = n.map(x => `
+    <div class="claim-row" style="cursor:${x.reclamoId ? 'pointer' : 'default'};grid-template-columns:44px 1fr auto;"
+         ${x.reclamoId ? 'onclick="location.href=\'detalle.html?id=' + encodeURIComponent(x.reclamoId) + '\'"' : ''}>
+      <span class="kpi-icon" style="background:var(--cyan-light);color:var(--cyan-text);width:40px;height:40px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${ICN[x.tipo] || ICN.cuenta}</svg>
+      </span>
+      <div>
+        <div class="claim-title">${x.titulo}${x.leida ? '' : ' <span class="badge badge-proceso" style="margin-left:6px;">Nuevo</span>'}</div>
+        <div class="claim-meta">${x.detalle || ''}</div>
+      </div>
+      <div class="claim-date">${Reclamos.fechaHora(x.createdAt)}</div>
+    </div>`).join('');
+}
+
+document.getElementById('btn-leidas').addEventListener('click', async () => {
+  await Reclamos.marcarNotificacionesLeidas(dni);
+  showToast('Listo', 'Marcamos todos los avisos como leídos.');
+  cargar();
+});
+let silenciado = false;
+document.getElementById('btn-silenciar').addEventListener('click', async () => {
+  silenciado = !silenciado;
+  const r = await Reclamos.silenciarAvisos(dni, silenciado);
+  if (r.ok) {
+    document.getElementById('btn-silenciar').textContent = silenciado ? 'Reactivar avisos' : 'Silenciar avisos';
+    showToast(silenciado ? 'Avisos silenciados' : 'Avisos reactivados',
+      silenciado ? 'Dejas de recibirlos, pero conservas tus reclamos.' : 'Volverás a recibir los avisos.');
+  }
+});
+cargar();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuenta eliminada | Sistema de Gestión de Reclamos — Integratel Perú</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B2545%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%2300B4D8%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22900%22>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">IT</span>
+      <div><b style="display:block;font-size:14px;">Integratel</b><span style="font-size:11px;color:#9FBED3;">Reclamos</span></div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="nuevo-reclamo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M12 5v14M5 12h14"/></svg>Nuevo reclamo</a>
+      <a href="mis-reclamos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4M9 11V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v18M9 11h6m0 0h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/></svg>Mis reclamos</a>
+      <a href="seguimiento.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Seguimiento</a>
+      <a href="notificaciones.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M6 16.4v-5a6 6 0 0 1 12 0v5l2 3H4z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg>Notificaciones</a>
+      <a href="accesibilidad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="4.5" r="2.1"/><path d="M4.8 8.8 12 10.4l7.2-1.6M12 10.4v4.2M12 14.6 8.8 21M12 14.6 15.2 21"/></svg>Accesibilidad</a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar cian" id="side-avatar">--</div>
+        <div><b id="side-nombre">Usuario</b><span id="side-dni">—</span></div>
+      </div>
+      <button class="btn btn-sm" id="btn-logout" style="width:100%;margin-top:12px;background:rgba(255,255,255,.08);color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Salir
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="btn-sidebar-toggle" class="nav-toggle" aria-label="Abrir el menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
+        <div><b style="color:var(--ink);font-size:16px;">Cuenta eliminada</b></div>
+      </div>
+      
+    </div>
+
+    <main class="app-content" id="contenido">
+
+      <div style="max-width:880px;margin:0 auto;">
+        <div class="panel" style="text-align:center;padding:48px 32px;">
+          <div class="state-ilu good" style="margin-bottom:20px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M8.2 12.4 11 15.2l5-5.4"/></svg>
+          </div>
+          <h1 style="font-size:calc(32px * var(--fs,1));color:var(--ink);">Tu cuenta fue eliminada</h1>
+          <p style="font-size:calc(15px * var(--fs,1));color:var(--muted);margin-top:10px;">
+            Cerramos tu sesión en todos los equipos y te enviamos un correo de confirmación.</p>
+
+          <div class="alerta alerta-info" style="justify-content:center;margin:22px auto 0;max-width:560px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5.5" width="20" height="13" rx="2"/><path d="M2.6 7.4 12 13.6l9.4-6.2"/></svg>
+            <div><b id="correo-conf">Confirmación enviada a tu correo</b></div>
+          </div>
+
+          <div class="panel" style="background:var(--warn-bg);border-color:var(--warn);margin-top:24px;text-align:left;">
+            <h2 style="font-size:calc(17px * var(--fs,1));color:var(--warn-text);">Tienes 30 días para arrepentirte</h2>
+            <p style="font-size:calc(13.5px * var(--fs,1));color:var(--ink);margin-top:8px;">
+              Hasta el <b id="fecha-limite">—</b> puedes recuperar tu cuenta y todo tu historial.
+              Después de esa fecha, la eliminación es definitiva.</p>
+            <div class="progress" style="margin-top:14px;"><i id="barra-gracia" style="width:3%"></i></div>
+            <p style="font-size:calc(12px * var(--fs,1));color:var(--muted);margin-top:8px;" id="dias-restantes"></p>
+          </div>
+
+          <div class="state-actions" style="margin-top:26px;">
+            <button class="btn btn-primary" id="btn-restaurar">Recuperar mi cuenta</button>
+            <button class="btn btn-ghost" id="btn-datos">Descargar mis datos</button>
+          </div>
+          <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-top:18px;">
+            Si no haces nada, tu cuenta se borrará sola. Tus reclamos ya registrados siguen vigentes ante Osiptel e Indecopi.</p>
+        </div>
+
+        <div class="grid cols-3" style="margin-top:22px;">
+          <div class="panel"><h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);">Tus reclamos siguen su curso</h3>
+            <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-top:6px;" id="reclamos-vigentes">Se conservan de forma anonimizada.</p></div>
+          <div class="panel"><h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);">Te responderemos por correo</h3>
+            <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-top:6px;">Aunque ya no tengas cuenta, la respuesta llega igual.</p></div>
+          <div class="panel"><h3 style="font-size:calc(14.5px * var(--fs,1));color:var(--ink);">Consulta con tu código</h3>
+            <p style="font-size:calc(12.5px * var(--fs,1));color:var(--muted);margin-top:6px;">
+              <a href="seguimiento.html" style="color:var(--cyan-text);font-weight:700;">Puedes seguir el estado sin iniciar sesión.</a></p></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/reclamos.js"></script>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/estados.js"></script>
+<script src="../assets/js/a11y.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+
+<script>
+const q = new URLSearchParams(location.search);
+const dni = q.get('dni');
+let info = {};
+try { info = JSON.parse(sessionStorage.getItem('integratel_baja') || '{}'); } catch (e) {}
+
+function fecha(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+async function pintar() {
+  let efectiva = info.bajaEfectivaAt, vigentes = info.reclamosVigentes;
+  if (!efectiva && dni) {
+    const r = await Reclamos.estadoCuenta(dni);
+    if (r.ok) efectiva = r.user.bajaEfectivaAt;
+  }
+  document.getElementById('fecha-limite').textContent = fecha(efectiva);
+  if (info.correo && info.correo.destinatario) {
+    document.getElementById('correo-conf').textContent =
+      'Confirmación enviada a ' + info.correo.destinatario +
+      (info.correo.simulado ? ' (modo demo: ver backend/sent_emails/)' : '');
+  }
+  if (efectiva) {
+    const total = 30, faltan = Math.max(0, Math.ceil((new Date(efectiva) - Date.now()) / 86400000));
+    document.getElementById('barra-gracia').style.width = Math.max(3, ((total - faltan) / total) * 100) + '%';
+    document.getElementById('dias-restantes').textContent = 'Quedan ' + faltan + ' de ' + total + ' días.';
+  }
+  if (vigentes && vigentes.length) {
+    document.getElementById('reclamos-vigentes').textContent =
+      vigentes.join(', ') + (vigentes.length === 1 ? ' continúa en evaluación.' : ' continúan en evaluación.');
+  }
+}
+
+document.getElementById('btn-restaurar').addEventListener('click', async () => {
+  const r = await Reclamos.restaurarCuenta(dni);
+  if (!r.ok) { showToast('No pudimos recuperarla', r.error || ''); return; }
+  sessionStorage.removeItem('integratel_baja');
+  showToast('Cuenta recuperada', 'Vuelve a iniciar sesión con tus datos de siempre.');
+  setTimeout(() => location.href = 'index.html', 1400);
+});
+document.getElementById('btn-datos').addEventListener('click', () => Reclamos.descargarMisDatos(dni));
+
+if (q.get('restaurar') === '1') document.getElementById('btn-restaurar').focus();
+pintar();
+</script>
+
+</body>
+</html>
