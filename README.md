@@ -305,6 +305,8 @@ python _pruebas.py
 
 Muestra 52 verificaciones de la API y termina con `FALLAS: 0`.
 
+Para probar la comprensión del asistente (desde la raíz del proyecto): `npm test`.
+
 > Nota: GitHub Pages solo sirve páginas estáticas, por lo que sirve para ver el sitio institucional pero no el sistema de reclamos, que necesita el servidor Flask y la base de datos.
 
 ## Documentación
