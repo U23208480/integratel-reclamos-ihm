@@ -1,7 +1,0 @@
-.git
-__pycache__
-*.pyc
-.venv
-backend/pdfs/*.pdf
-backend/sent_emails/*.eml
-backend/integratel.db

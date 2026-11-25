@@ -264,18 +264,6 @@ Con la sesión iniciada aparece un botón de micrófono (o `Alt + Q`) en todas l
 
 Repositorio: https://github.com/U23208480/integratel-reclamos-ihm
 
-### Opción rápida. Con Docker (un solo comando, incluye MySQL)
-
-> Esta configuración no se probó en el equipo donde se desarrolló (Docker Desktop no arrancaba); si falla, usa la Opción A.
-
-```bash
-git clone https://github.com/U23208480/integratel-reclamos-ihm.git
-cd integratel-reclamos-ihm
-docker compose up --build
-```
-
-Abre http://localhost:5000 e ingresa con la cuenta demo: DNI `71234567`, contraseña `Demo1234`. Para detenerlo: `Ctrl + C`.
-
 ### Opción A. En tu computadora (con MySQL)
 
 Requisitos: Git, Python 3.10 o superior y MySQL 8 en ejecución.
