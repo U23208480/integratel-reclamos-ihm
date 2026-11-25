@@ -316,3 +316,4 @@ Para probar la comprensión del asistente (desde la raíz del proyecto): `npm te
 - [Asistente de voz](docs/ASISTENTE_DE_VOZ.md)
 - [Accesibilidad e inclusión](docs/ACCESIBILIDAD.md)
 - [Cambios](CHANGELOG.md)
+- [Nota académica](docs/NOTA_ACADEMICA.md)
