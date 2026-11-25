@@ -6,3 +6,5 @@ backend/integratel.db
 backend/pdfs/*.pdf
 backend/sent_emails/*.eml
 _cap.html
+node_modules/
+npm-debug.log*
