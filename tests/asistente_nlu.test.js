@@ -9,6 +9,10 @@ const casos = [
   ['¿Cuántos reclamos tengo?', 'resumen'],
   ['abrir notificaciones', 'ir'],
   ['llévame a accesibilidad', 'ir'],
+  ['nuevo reclamo', 'registrar'],
+  ['ir a mi perfil', 'ir'],
+  ['seguimiento', 'ir'],
+  ['el técnico nunca vino a instalar el router', 'desconocido'],
   ['sí', 'si'], ['no', 'no'], ['ayuda', 'ayuda'], ['cerrar sesión', 'salir'], ['hola', 'desconocido'],
 ];
 for (const [frase, esperado] of casos) assert.strictEqual(interpretar(frase).intent, esperado, frase);
