@@ -1,0 +1,9 @@
+{
+  "name": "integratel-reclamos-ihm",
+  "version": "1.0.0",
+  "description": "MVP del Sistema de Gestión de Reclamos de Integratel con asistente de voz",
+  "private": true,
+  "scripts": {
+    "test": "node tests/asistente_nlu.test.js"
+  }
+}
