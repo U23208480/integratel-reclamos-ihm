@@ -21,6 +21,12 @@ Este proyecto ya no funciona abriendo el `.html` directo ni con Live Server: el 
 
 Para detener el servidor, `Ctrl + C` en la terminal donde corre.
 
+## Requisitos
+
+- Python 3.10 o superior y MySQL 8 (para ejecutar el sistema completo).
+- Navegador Chrome o Edge para la entrada por voz del asistente.
+- Node.js 18 o superior solo para las pruebas del asistente (`npm test`).
+
 ## Estructura del proyecto
 
 ```
